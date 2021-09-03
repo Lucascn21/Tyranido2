@@ -1,0 +1,17 @@
+@mixin superCentre {
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+
+@mixin backgroundify($url) {
+	background-image: url($url);
+	background-size: cover; /* <------ */
+	background-repeat: no-repeat;
+	background-position: center center; /* optional, center the image */
+}
+
+@mixin fullWidthHeight() {
+	width: 100%;
+	height: 100%;
+}

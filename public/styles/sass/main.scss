@@ -1,0 +1,37 @@
+@charset "UTF-8";
+
+// Import a Google Font
+@import url("https://fonts.googleapis.com/css?family=Nunito:400,700");
+
+@import "./abstract/variables";
+@import "./abstract/mixins";
+
+@import "./base/base";
+@import "./base/typography";
+@import "./base/colors";
+
+@import "./layout/body";
+@import "./layout/main";
+@import "./layout/section";
+@import "./layout/header";
+@import "./layout/footer";
+
+@import "./pages/page1";
+@import "./pages/page2";
+//@import "./flavors/mini-nord.scss";
+/*
+@import "./components/component1";
+@import "./components/component2";
+
+*/
+
+body{
+    display:grid;
+    height: 100vh;
+    @include superCentre;
+    background-color:$md-amber-200;
+}
+
+main{
+    background-color: $md-amber-300;
+}
