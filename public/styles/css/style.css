@@ -1,22 +1,77 @@
 @import url("https://fonts.googleapis.com/css?family=Nunito:400,700");
 * {
-  font-family: "Lato", sans-serif; }
+  font-family: "Roboto Mono", monospace; }
 
-h1 {
-  color: red; }
-
-/*
-@import "./components/component1";
-@import "./components/component2";
-
-*/
 body {
   display: grid;
   height: 100vh;
   margin: 0;
   padding: 0;
   list-style: none;
-  background-color: #ffe082; }
+  background-color: #ff8f00;
+  grid-template-areas: "nav" "main" "footer";
+  grid-template-rows: 7% auto 7%; }
+
+body nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  grid-area: nav;
+  background-color: #000000;
+  color: #ffffff; }
 
 main {
-  background-color: #ffd54f; }
+  display: grid;
+  grid-area: main;
+  grid-template-areas: ". . ." ". section ." ". . .";
+  background-color: #1b1824;
+  grid-template-columns: minmax(1%, 5%) auto minmax(1%, 5%);
+  grid-template-rows: minmax(1%, 5%) auto minmax(1%, 5%); }
+
+form {
+  display: contents;
+  flex-direction: column;
+  justify-content: center;
+  height: -webkit-fill-available; }
+  form .input-group-text {
+    background-color: #ffc107;
+    border-color: #ffc107; }
+
+section {
+  grid-area: section;
+  text-align: center;
+  background-color: #000000;
+  border: 1px solid #343a40; }
+  section p {
+    margin: 1rem; }
+  section nav {
+    display: inline; }
+  section input {
+    display: flex;
+    padding-left: 0.5rem;
+    border: 1px solid #dee2e6;
+    border-radius: 1rem;
+    background-color: #000000; }
+  section label {
+    color: #eeeeee; }
+    section label input {
+      display: inline; }
+  section button {
+    border: 0;
+    border-radius: 1rem;
+    background-color: #ffb300; }
+
+footer {
+  grid-area: footer;
+  background-color: #000000;
+  color: #ffffff; }
+  footer p {
+    text-align-last: center;
+    margin-bottom: 0px;
+    margin-top: 10px; }
+
+/*
+@import "./components/component1";
+@import "./components/component2";
+
+*/

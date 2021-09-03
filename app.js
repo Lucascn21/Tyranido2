@@ -42,5 +42,5 @@ app.use(function (err, req, res, next) {
 	res.render("error");
 });
 
-console.dir(`https/localhost:3000`);
+console.dir(`https://localhost:3000`);
 module.exports = app;

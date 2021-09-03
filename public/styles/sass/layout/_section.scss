@@ -1,0 +1,32 @@
+section {
+	grid-area: section;
+	text-align: center;
+	background-color: $md-black;
+	border: 1px solid #343a40;
+
+	p {
+		margin: 1rem;
+	}
+
+	nav {
+		display: inline;
+	}
+	input {
+		display: flex;
+		padding-left: 0.5rem;
+		border: 1px solid #dee2e6;
+		border-radius: 1rem;
+		background-color: $md-black;
+	}
+	label {
+		color: $md-grey-200;
+		input {
+			display: inline;
+		}
+	}
+	button {
+		border: 0;
+		border-radius: 1rem;
+		background-color: $md-amber-600;
+	}
+}

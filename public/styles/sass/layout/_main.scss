@@ -1,0 +1,12 @@
+main {
+	display: grid;
+	grid-area: main;
+	grid-template-areas:
+		". . ."
+		". section ."
+		". . .";
+	background-color: #1b1824;
+
+	grid-template-columns: minmax(1%, 5%) auto minmax(1%, 5%);
+	grid-template-rows: minmax(1%, 5%) auto minmax(1%, 5%);
+}

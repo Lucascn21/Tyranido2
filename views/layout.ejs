@@ -3,15 +3,101 @@
 	<head>
 		<meta charset="UTF-8" />
 		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		<link rel="stylesheet" href="/styles/css/style.css" />
-
+		<link
+			href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+			rel="stylesheet"
+			integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+			crossorigin="anonymous"
+		/>
+		<script
+			src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+			integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+			crossorigin="anonymous"
+		></script>
+		<script src="https://kit.fontawesome.com/d339e9753d.js" crossorigin="anonymous"></script>
 		<title>Document</title>
 	</head>
 
 	<body>
-		<nav><a href=".">A</a> <a href=".">B</a></nav>
-		<main></main>
-		<footer>2021</footer>
+		<nav>
+			<header>Tyranido</header>
+			<a href=".">A</a> <a href=".">B</a><a href=".">C</a>
+		</nav>
+		<main>
+			<section>
+				<form id="register" action="/signup" method="post">
+					<nav aria-label="...">
+						<ul class="pagination">
+							<li class="page-item active disabled" aria-current="page">
+								<a class="page-link bg-dark border-0" href="#">Register</a>
+							</li>
+							<li class="page-item"><a class="page-link bg-dark border-0" href="#">Login</a></li>
+						</ul>
+					</nav>
+				
+					<label>Email</label>
+					<div class="input-group d-flex justify-content-center">
+						<span class="input-group-text"><i class="fas fa-envelope" aria-hidden="true"></i></span>
+
+						<input
+							type="email"
+							name="email"
+							required
+							placeholder="yourmail@email.com"
+							style="
+								color: aliceblue;
+								text-shadow: 2px 2px rgb(61 4 61);
+								box-shadow: 0 4px 8px 0 rgb(0 0 0 / 20%), 0 6px 20px 0 rgb(0 0 0 / 19%);
+							"
+						/>
+					</div>
+
+					<label>Username</label>
+					<div class="input-group d-flex justify-content-center">
+						<span class="input-group-text"><i class="fas fa-user" aria-hidden="true"></i></span>
+
+						<input
+							type="text"
+							name="username"
+							placeholder="Username"
+							style="
+								color: aliceblue;
+								text-shadow: 2px 2px rgb(61 4 61);
+								box-shadow: 0 4px 8px 0 rgb(0 0 0 / 20%), 0 6px 20px 0 rgb(0 0 0 / 19%);
+							"
+						/>
+					</div>
+
+					<label>Password</label>
+					<div class="input-group d-flex justify-content-center">
+						<span class="input-group-text"><i class="fas fa-key" aria-hidden="true"></i></span>
+						<input
+							type="password"
+							name="password"
+							placeholder="Password"
+							style="
+								color: aliceblue;
+								text-shadow: 2px 2px rgb(61 4 61);
+								box-shadow: 0 4px 8px 0 rgb(0 0 0 / 20%), 0 6px 20px 0 rgb(0 0 0 / 19%);
+							"
+						/>
+					</div>
+
+					<p>
+						<label>
+							<input type="checkbox" value="terms" />
+							I agree to the <a href="/terms">terms and conditions</a>
+						</label>
+					</p>
+					<p>
+						<button>Sign up</button>
+						<button type="reset">Reset form</button>
+					</p>
+				</form>
+			</section>
+		</main>
+		<footer><p>Some rights reserved</p></footer>
 	</body>
 </html>

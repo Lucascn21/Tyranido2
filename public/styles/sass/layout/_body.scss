@@ -1,0 +1,24 @@
+body {
+	display: grid;
+	height: 100vh;
+	@include superCentre;
+
+	background-color: $md-amber-800;
+
+	grid-template-areas:
+		"nav"
+		"main"
+		"footer";
+	grid-template-rows: 7% auto 7%;
+}
+
+body {
+	nav {
+		display: flex;
+		align-items: center;
+		justify-content: space-around;
+		grid-area: nav;
+		background-color: $md-black;
+		color: $md-white;
+	}
+}

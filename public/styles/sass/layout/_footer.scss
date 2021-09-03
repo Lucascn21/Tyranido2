@@ -1,0 +1,11 @@
+
+footer {
+	p {
+		text-align-last: center;
+		margin-bottom: 0px;
+		margin-top: 10px;
+	}
+	grid-area: footer;
+	background-color: $md-black;
+	color: $md-white;
+}

@@ -1,0 +1,11 @@
+form {
+	display: contents;
+	flex-direction: column;
+	justify-content: center;
+	height: -webkit-fill-available;
+	.input-group-text {
+		background-color: $md-amber-500;
+		border-color: $md-amber-500;
+	}
+
+}
