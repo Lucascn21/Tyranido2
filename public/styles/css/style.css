@@ -41,7 +41,8 @@ section {
   grid-area: section;
   text-align: center;
   background-color: #000000;
-  border: 1px solid #343a40; }
+  border: 1px solid #343a40;
+  place-self: center; }
   section p {
     margin: 1rem; }
   section nav {
@@ -57,9 +58,11 @@ section {
     section label input {
       display: inline; }
   section button {
-    border: 0;
+    border: 1px solid #dee2e6;
     border-radius: 1rem;
-    background-color: #ffb300; }
+    background-color: #000000;
+    border-color: #ffffff;
+    color: #ffffff; }
 
 footer {
   grid-area: footer;
@@ -75,3 +78,10 @@ footer {
 @import "./components/component2";
 
 */
+@media screen and (min-width: 750px) {
+  * {
+    font-size: x-large; } }
+
+@media screen and (min-width: 990px) {
+  * {
+    font-size: x-large; } }

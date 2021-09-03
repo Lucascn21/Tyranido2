@@ -3,6 +3,7 @@ section {
 	text-align: center;
 	background-color: $md-black;
 	border: 1px solid #343a40;
+    place-self: center;
 
 	p {
 		margin: 1rem;
@@ -25,8 +26,11 @@ section {
 		}
 	}
 	button {
-		border: 0;
+		border: 1px solid #dee2e6;
 		border-radius: 1rem;
-		background-color: $md-amber-600;
+		background-color: $md-black;
+        border-color: $md-white;
+        color:$md-white;
+
 	}
 }
