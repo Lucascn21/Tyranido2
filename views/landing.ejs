@@ -1,7 +1,7 @@
 
 <main>
     <section>
-        <form id="register" action="/signup" method="post">
+        <form id="register" action="auth/register" method="post">
             <nav aria-label="...">
                 <ul class="pagination">
                     <li class="page-item active disabled" aria-current="page">
@@ -66,7 +66,7 @@
                 </label>
             </p>
             <p>
-                <button>Sign up</button>
+                <button formmethod="POST" form="register" type="submit">Sign up</button>
                 <button type="reset">Reset form</button>
             </p>
         </form>

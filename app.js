@@ -1,18 +1,28 @@
 /*jshint esversion: 6 */
-require('dotenv').config()
-let createError = require("http-errors");
-let express = require("express");
-let path = require("path");
-let cookieParser = require("cookie-parser");
-let logger = require("morgan");
-let expressLayouts = require("express-ejs-layouts");
+require("dotenv").config();
+const createError = require("http-errors");
+const express = require("express");
+const path = require("path");
+const cookieParser = require("cookie-parser");
+const logger = require("morgan");
+const expressLayouts = require("express-ejs-layouts");
+const session = require("express-session");
+const mongoose = require("mongoose");
+const MongoDBStore = require('connect-mongodb-session')(session);
+
+//Helpers
+const { monitorMongoose } = require("./helpers/mongooseHelpers");
+//Models
+
 
 //Routers
-let landingRouter = require("./routes/landing");
-let loginRouter = require("./routes/login");
-let usersRouter = require("./routes/users");
+const landingRouter = require("./routes/landing");
+const loginRouter = require("./routes/login");
+const usersRouter = require("./routes/users");
+const authRouter = require("./routes/auth");
+const dashboardRouter = require("./routes/dashboard");
 
-let app = express();
+const app = express();
 
 // view engine setup
 app.set("views", path.join(__dirname, "views"));
@@ -25,9 +35,44 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, "public")));
 app.use(expressLayouts);
 
+
+const store = new MongoDBStore({
+	uri: 'mongodb://localhost:27017/Sessions',//Envear quizas
+	collection: 'Sessions'
+  });
+
+  // Catch errors
+  store.on('error', function(error) {
+	console.log(error);
+  });
+
+//Session
+app.use(session({
+	secret: 'This is a secret', //envear
+	resave: false,
+	saveUninitialized: false,
+	cookie: {
+	  maxAge: 1000 * 60 * 60 * 24 * 7 // 1 week
+	},
+	store: store
+  }));
+
+
+//DB
+mongoose.connect("mongodb://localhost:27017/Users").then((res) => { //Envear quizas
+	monitorMongoose(mongoose);
+	console.log("mongodb, conectado");
+});
+
+
+  
+
+//	
 app.use("/", landingRouter);
 app.use("/users", usersRouter);
 app.use("/login", loginRouter);
+app.use("/auth", authRouter);
+app.use("/dashboard", dashboardRouter);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
