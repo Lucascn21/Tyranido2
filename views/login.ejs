@@ -1,33 +1,15 @@
 
 <main>
     <section>
-        <form id="register" action="/signup" method="post">
+        <form id="login" action="/login" method="post">
             <nav aria-label="...">
                 <ul class="pagination">
-                    <li class="page-item active disabled" aria-current="page">
-                        <a class="page-link bg-dark border-top-0 border-bottom-0 border-start-0 border-secondary" href="#">Register</a>
+                    <li class="page-item" aria-current="page">
+                        <a class="page-link bg-dark border-top-0 border-bottom-0 border-start-0 border-secondary" href="/">Register</a>
                     </li>
-                    <li class="page-item"><a class="page-link bg-dark border-0" href="/login">Login</a></li>
+                    <li class="page-item active disabled"><a class="page-link bg-dark border-top-0 border-bottom-0 border-end-0" href="#">Login</a></li>
                 </ul>
             </nav>
-        
-            <label>Email</label>
-            <div class="input-group d-flex justify-content-center">
-                <span class="input-group-text"><i class="fas fa-envelope" aria-hidden="true"></i></span>
-
-                <input
-                    type="email"
-                    name="email"
-                    required
-                    placeholder="yourmail@email.com"
-                    style="
-                        color: aliceblue;
-                        text-shadow: 2px 2px rgb(61 4 61);
-                        box-shadow: 0 4px 8px 0 rgb(0 0 0 / 20%), 0 6px 20px 0 rgb(0 0 0 / 19%);
-                    "
-                />
-            </div>
-
             <label>Username</label>
             <div class="input-group d-flex justify-content-center">
                 <span class="input-group-text"><i class="fas fa-user" aria-hidden="true"></i></span>
@@ -58,16 +40,8 @@
                     "
                 />
             </div>
-
             <p>
-                <label>
-                    <input type="checkbox" value="terms" />
-                    I agree to the <a href="/terms">terms and conditions</a>
-                </label>
-            </p>
-            <p>
-                <button>Sign up</button>
-                <button type="reset">Reset form</button>
+                <button>Login</button>
             </p>
         </form>
     </section>

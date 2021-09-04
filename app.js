@@ -1,4 +1,5 @@
 /*jshint esversion: 6 */
+require('dotenv').config()
 let createError = require("http-errors");
 let express = require("express");
 let path = require("path");
@@ -8,6 +9,7 @@ let expressLayouts = require("express-ejs-layouts");
 
 //Routers
 let landingRouter = require("./routes/landing");
+let loginRouter = require("./routes/login");
 let usersRouter = require("./routes/users");
 
 let app = express();
@@ -25,6 +27,7 @@ app.use(expressLayouts);
 
 app.use("/", landingRouter);
 app.use("/users", usersRouter);
+app.use("/login", loginRouter);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
