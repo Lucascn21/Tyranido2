@@ -57,8 +57,7 @@ app.use(
 );
 
 //DB
-mongoose.connect("mongodb://localhost:27017/Users").then(() => {
-	//Envear quizas
+mongoose.connect("mongodb://localhost:27017/Users").then(() => {	//Envear quizas
 	monitorMongoose(mongoose);
 	console.log("mongodb, conectado");
 });
@@ -71,7 +70,7 @@ app.use("/dashboard", dashboardRouter);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
-	req.session.context="404"
+	req.session.context="Page not found";
 	next(createError(404));
 });
 

@@ -1,9 +1,7 @@
 var express = require("express");
 var router = express.Router();
-
+const landingController = require("../controllers/landingController");
 /* GET home page. */
-router.get("/", function (req, res, next) {
-	res.render("landing", { context: req.session.context });
-});
+router.get("/", landingController.index);
 
 module.exports = router;
