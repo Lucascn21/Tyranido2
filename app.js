@@ -34,8 +34,8 @@ app.use(express.static(path.join(__dirname, "public")));
 app.use(expressLayouts);
 
 const store = new MongoDBStore({
-	uri: "mongodb://localhost:27017/Sessions", //Envear quizas
-	collection: "Sessions",
+	uri: process.env.DB_SESSURI,
+	collection: process.env.DB_COLLECTION_SESSION,
 });
 
 // Catch errors
@@ -46,7 +46,7 @@ store.on("error", function (error) {
 //Session
 app.use(
 	session({
-		secret: "This is a secret", //envear
+		secret: process.env.SESS_SECRET,
 		resave: false,
 		saveUninitialized: false,
 		cookie: {
@@ -57,7 +57,7 @@ app.use(
 );
 
 //DB
-mongoose.connect("mongodb://localhost:27017/Users").then(() => {	//Envear quizas
+mongoose.connect(process.env.DB_USERURI).then(() => {
 	monitorMongoose(mongoose);
 	console.log("mongodb, conectado");
 });
