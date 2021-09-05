@@ -10,7 +10,7 @@ exports.register = async (req, res, next) => {
 	let user = (await userModel.findOne({ email })) || (await userModel.findOne({ username }));
 
 	if (user) {
-		req.session.context = "failedRegister";
+		req.session.context = "user/email already exist";
 		return res.redirect("/");
 	}
 
@@ -26,34 +26,12 @@ exports.register = async (req, res, next) => {
 		req.session.context = "successfulRegister";
 		res.redirect("/dashboard");
 	} catch (error) {
-		console.dir(error)
-		return res.redirect("/error");
+		req.session.context = "errorsInTheForm";
+		return res.redirect("/");
 	}
-	// Password must not be empty.
-	/*
-	try {
-		// Save into the data base
-		user = await user.save({ fields: ["username", "password", "salt"] });
-		req.flash("success", "User created successfully.");
-		if (req.loginUser) {
-			res.redirect("/users/" + user.id); //Lo llevo a donde corresponde si esta logueado(creo)
-		} else {
-			res.redirect("/login"); // Redirection to the login page
-		}
-	} catch (error) {
-		if (error instanceof Sequelize.UniqueConstraintError) {
-			req.flash("error", `User "${username}" already exists.`);
-		res.send('Login') //Tiene que ser un render con el error
-		} else if (error instanceof Sequelize.ValidationError) {
-			req.flash("error", "There are errors in the form:");
-			error.errors.forEach(({ message }) => req.flash("error", message));
-			res.send('Login') //Tiene que ser un render con el error
-		} else {
-			next(error);
-		}
-	}
-    */
 };
+
+
 // POST /login
 exports.login = async (req, res, next) => {
 	const { username, password } = req.body;
@@ -75,8 +53,8 @@ exports.login = async (req, res, next) => {
 			return res.redirect("/login");
 		}
 	} catch (error) {
-		console.dir(error)
-		return res.redirect("/error");
+		req.session.context="401";
+		next(createError(401));
 	}
 
 };
