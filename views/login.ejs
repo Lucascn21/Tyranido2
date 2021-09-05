@@ -1,4 +1,5 @@
 <main>
+
 	<section>
 		<form id="login" action="auth/login" method="post">
 			<nav aria-label="...">
@@ -26,6 +27,7 @@
 						text-shadow: 2px 2px rgb(61 4 61);
 						box-shadow: 0 4px 8px 0 rgb(0 0 0 / 20%), 0 6px 20px 0 rgb(0 0 0 / 19%);
 					"
+					required
 				/>
 			</div>
 
@@ -41,11 +43,14 @@
 						text-shadow: 2px 2px rgb(61 4 61);
 						box-shadow: 0 4px 8px 0 rgb(0 0 0 / 20%), 0 6px 20px 0 rgb(0 0 0 / 19%);
 					"
+					required
 				/>
 			</div>
 			<p>
 				<button formmethod="POST" form="login" type="submit">Login</button>
 			</p>
+		
 		</form>
+		<p><%= context %></p>
 	</section>
 </main>

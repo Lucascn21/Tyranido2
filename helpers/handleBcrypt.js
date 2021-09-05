@@ -5,8 +5,8 @@ const encrypt = async (PlaintextPassword, saltRounds) => {
 	return hash;
 };
 
-const compare = async (PlaintextPassword) => {
-	return await bcrypt.compare(PlaintextPassword, hash);
+const compare = async (PlaintextPassword, hashedPassword) => {
+	return await bcrypt.compare(PlaintextPassword, hashedPassword);
 };
 
 module.exports = { encrypt, compare };

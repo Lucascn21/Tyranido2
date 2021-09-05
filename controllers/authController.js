@@ -1,32 +1,35 @@
-
-const {encrypt, compare}=require('../helpers/handleBcrypt')
-const userModel=require('../models/User')
+const { encrypt, compare } = require("../helpers/handleBcrypt");
+const userModel = require("../models/User");
 
 // POST /register //TODO FINISH THIS CONTROLLER AND DO THE SAME WITH THE REST
-exports.create = async (req, res, next) => {
+exports.register = async (req, res, next) => {
 	//Get this from the body
 	const { email, username, password } = req.body;
 
-    //TODO Handle if the mail exists 
-    let user = await userModel.findOne({email})
-    if(user){
-        return res.redirect('/');
-    }
+	//TODO Handle if the mail exists
+	let user = (await userModel.findOne({ email })) || (await userModel.findOne({ username }));
 
-    //build our model from the body
-    user= new userModel({
-        username,
-        email,
-        password: await encrypt(password, 12) //envear el salt
-    })
+	if (user) {
+		req.session.context = "failedRegister";
+		return res.redirect("/");
+	}
 
+	//build our model from the body
+	user = new userModel({
+		username,
+		email,
+		password: await encrypt(password, 12), //envear el salt
+	});
 
-    await user.save();
-    res.redirect('/dashboard');
-	
-
+	try {
+		await user.save();
+		req.session.context = "successfulRegister";
+		res.redirect("/dashboard");
+	} catch (error) {
+		console.dir(error)
+		return res.redirect("/error");
+	}
 	// Password must not be empty.
-
 	/*
 	try {
 		// Save into the data base
@@ -50,4 +53,30 @@ exports.create = async (req, res, next) => {
 		}
 	}
     */
+};
+// POST /login
+exports.login = async (req, res, next) => {
+	const { username, password } = req.body;
+	const user = await userModel.findOne({ username });
+	try {
+		if (!user) {
+			res.status(409);
+			req.session.context = "failedLoginWrongCredentials";
+			return res.redirect("/register");
+		}
+		const passwordMatches = await compare(password, user.password);
+		if (passwordMatches) {
+			res.status(200);
+			req.session.context = "SuccesfulLogin";
+			return res.redirect("/dashboard");
+		} else {
+			res.status(409);
+			req.session.context = "failedLoginWrongCredentials";
+			return res.redirect("/login");
+		}
+	} catch (error) {
+		console.dir(error)
+		return res.redirect("/error");
+	}
+
 };

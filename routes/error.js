@@ -1,9 +1,8 @@
 var express = require("express");
 var router = express.Router();
+const errorController = require("../controllers/errorController");
 
 /* GET home page. */
-router.get("/", function (req, res, next) {
-	res.render("landing", { context: req.session.context });
-});
+router.get("/error", errorController.error);
 
 module.exports = router;

@@ -25,22 +25,12 @@
 
 */
 
-
 * {
-  @media screen and (min-width: $medium) {
-	  font-size:x-large;
-  }
-  @media screen and (min-width: $large) {
-	font-size:x-large;
+	@media screen and (min-width: $medium) {
+		font-size: x-large;
+	}
+	@media screen and (min-width: $large) {
+		font-size: x-large;
+	}
 }
-}
-
-
-
-
-
-
-
-
-
 

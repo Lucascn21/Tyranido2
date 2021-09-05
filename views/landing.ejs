@@ -1,74 +1,79 @@
-
 <main>
-    <section>
-        <form id="register" action="auth/register" method="post">
-            <nav aria-label="...">
-                <ul class="pagination">
-                    <li class="page-item active disabled" aria-current="page">
-                        <a class="page-link bg-dark border-top-0 border-bottom-0 border-start-0 border-secondary" href="#">Register</a>
-                    </li>
-                    <li class="page-item"><a class="page-link bg-dark border-0" href="/login">Login</a></li>
-                </ul>
-            </nav>
-        
-            <label>Email</label>
-            <div class="input-group d-flex justify-content-center">
-                <span class="input-group-text"><i class="fas fa-envelope" aria-hidden="true"></i></span>
+	<section>
+		<form id="register" action="auth/register" method="post">
+			<nav aria-label="...">
+				<ul class="pagination">
+					<li class="page-item active disabled" aria-current="page">
+						<a class="page-link bg-dark border-top-0 border-bottom-0 border-start-0 border-secondary" href="#"
+							>Register</a
+						>
+					</li>
+					<li class="page-item"><a class="page-link bg-dark border-0" href="/login">Login</a></li>
+				</ul>
+			</nav>
 
-                <input
-                    type="email"
-                    name="email"
-                    required
-                    placeholder="yourmail@email.com"
-                    style="
-                        color: aliceblue;
-                        text-shadow: 2px 2px rgb(61 4 61);
-                        box-shadow: 0 4px 8px 0 rgb(0 0 0 / 20%), 0 6px 20px 0 rgb(0 0 0 / 19%);
-                    "
-                />
-            </div>
+			<label>Email</label>
+			<div class="input-group d-flex justify-content-center">
+				<span class="input-group-text"><i class="fas fa-envelope" aria-hidden="true"></i></span>
 
-            <label>Username</label>
-            <div class="input-group d-flex justify-content-center">
-                <span class="input-group-text"><i class="fas fa-user" aria-hidden="true"></i></span>
+				<input
+					type="email"
+					name="email"
+					required
+					placeholder="yourmail@email.com"
+					style="
+						color: aliceblue;
+						text-shadow: 2px 2px rgb(61 4 61);
+						box-shadow: 0 4px 8px 0 rgb(0 0 0 / 20%), 0 6px 20px 0 rgb(0 0 0 / 19%);
+					"
+					required
+				/>
+			</div>
 
-                <input
-                    type="text"
-                    name="username"
-                    placeholder="Username"
-                    style="
-                        color: aliceblue;
-                        text-shadow: 2px 2px rgb(61 4 61);
-                        box-shadow: 0 4px 8px 0 rgb(0 0 0 / 20%), 0 6px 20px 0 rgb(0 0 0 / 19%);
-                    "
-                />
-            </div>
+			<label>Username</label>
+			<div class="input-group d-flex justify-content-center">
+				<span class="input-group-text"><i class="fas fa-user" aria-hidden="true"></i></span>
 
-            <label>Password</label>
-            <div class="input-group d-flex justify-content-center">
-                <span class="input-group-text"><i class="fas fa-key" aria-hidden="true"></i></span>
-                <input
-                    type="password"
-                    name="password"
-                    placeholder="Password"
-                    style="
-                        color: aliceblue;
-                        text-shadow: 2px 2px rgb(61 4 61);
-                        box-shadow: 0 4px 8px 0 rgb(0 0 0 / 20%), 0 6px 20px 0 rgb(0 0 0 / 19%);
-                    "
-                />
-            </div>
+				<input
+					type="text"
+					name="username"
+					placeholder="Username"
+					style="
+						color: aliceblue;
+						text-shadow: 2px 2px rgb(61 4 61);
+						box-shadow: 0 4px 8px 0 rgb(0 0 0 / 20%), 0 6px 20px 0 rgb(0 0 0 / 19%);
+					"
+					required
+				/>
+			</div>
 
-            <p>
-                <label>
-                    <input type="checkbox" value="terms" />
-                    I agree to the <a href="/terms">terms and conditions</a>
-                </label>
-            </p>
-            <p>
-                <button formmethod="POST" form="register" type="submit">Sign up</button>
-                <button type="reset">Reset form</button>
-            </p>
-        </form>
-    </section>
+			<label>Password</label>
+			<div class="input-group d-flex justify-content-center">
+				<span class="input-group-text"><i class="fas fa-key" aria-hidden="true"></i></span>
+				<input
+					type="password"
+					name="password"
+					placeholder="Password"
+					style="
+						color: aliceblue;
+						text-shadow: 2px 2px rgb(61 4 61);
+						box-shadow: 0 4px 8px 0 rgb(0 0 0 / 20%), 0 6px 20px 0 rgb(0 0 0 / 19%);
+					"
+					required
+				/>
+			</div>
+
+			<p>
+				<label>
+					<input type="checkbox" value="terms" />
+					I agree to the <a href="/terms">terms and conditions</a>
+				</label>
+			</p>
+			<p>
+				<button formmethod="POST" form="register" type="submit">Sign up</button>
+				<button type="reset">Reset form</button>
+			</p>
+		</form>
+		<p><%= context %></p>
+	</section>
 </main>
