@@ -74,6 +74,10 @@
 				<button type="reset">Reset form</button>
 			</p>
 		</form>
-		<p><%= context %></p>
+		<p>
+			<% if (context) { %>
+			<%= context %>
+			<% } %>
+		</p>
 	</section>
 </main>

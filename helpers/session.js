@@ -1,11 +1,11 @@
 // sessionAuthMW
 const isAuth = (req, res, next) => {
     if(req.session.isAuth){
-        next()
+        next();
     }else{
         res.status(401);
         req.session.context = "IncorrectSession";
-        res.redirect('back')
+        res.redirect('/');
     }
 };
 

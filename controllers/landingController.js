@@ -1,4 +1,5 @@
 // GET
 exports.index = async (req, res, next) => {
-	return res.render("landing", { context: req.session.context });
+	//TODO: Further testing on this default
+	return res.render("landing", { context: req.session.context ='' });
 };

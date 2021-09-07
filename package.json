@@ -7,8 +7,8 @@
 		"start": "node ./bin/www",
 		"debug": "set DEBUG=* & node ./bin/www",
 		"sass": "node-sass --omit-source-map-url ./public/styles/sass/main.scss ./public/styles/css/style.css -w",
-		"superDebug": " set DEBUG=* & supervisor -w .  -e ejs,js,json,css,scss ./bin/www  ",
-		"superDebugSass": "concurrently 'npm:sass' 'npm:superDebug'"
+		"super-debug": " set DEBUG=* & supervisor -w .  -e ejs,js,json,css,scss ./bin/www  ",
+		"super-debug-sass": "concurrently 'npm:sass' 'npm:super-debug'"
 	},
 	"dependencies": {
 		"bcrypt": "^5.0.1",

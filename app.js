@@ -70,7 +70,8 @@ app.use("/dashboard", dashboardRouter);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
-	req.session.context="Page not found";
+	//req.session.context="Page not found";
+
 	next(createError(404));
 });
 

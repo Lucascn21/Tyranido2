@@ -39,7 +39,7 @@ exports.login = async (req, res, next) => {
 		if (!user) {
 			res.status(409);
 			req.session.context = "failedLoginWrongCredentials";
-			return res.redirect("/");
+			return res.redirect("/login");
 		}
 		const passwordMatches = await compare(password, user.password);
 		if (passwordMatches) {
