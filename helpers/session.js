@@ -9,5 +9,15 @@ const isAuth = (req, res, next) => {
     }
 };
 
+const isNotAuth = (req, res, next) => {
+    if(req.session.isAuth){
+        res.status(401);
+        req.session.context = "AlreadyLoggedIn";
+        res.redirect('/dashboard');
+    }else{
+        next();
+    }
+};
 
-module.exports = { isAuth };
+
+module.exports = { isAuth, isNotAuth };
