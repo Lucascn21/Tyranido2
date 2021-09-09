@@ -1,4 +1,4 @@
-// GET
+// GET dashboard
 exports.index = async (req, res, next) => {
-	return res.render("dashboard", { context: req.session.context });
+	return res.render("dashboard", { context: res.locals.context });
 };

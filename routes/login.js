@@ -1,9 +1,9 @@
 var express = require("express");
 var router = express.Router();
 const loginController = require("../controllers/loginController");
-const{isNotAuth}=require("../helpers/session")
+const { isNotAuth } = require("../middlewares/session");
 
-/* GET home page. */
-router.get("/" , isNotAuth,loginController.index);
+/* GET login page. */
+router.get("/", isNotAuth, loginController.index);
 
 module.exports = router;

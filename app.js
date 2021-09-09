@@ -7,12 +7,7 @@ const cookieParser = require("cookie-parser");
 const logger = require("morgan");
 const expressLayouts = require("express-ejs-layouts");
 const session = require("express-session");
-const mongoose = require("mongoose");
 const MongoDBStore = require("connect-mongodb-session")(session);
-
-//Helpers
-const { monitorMongoose } = require("./helpers/mongooseHelpers");
-//Models
 
 //Routers
 const landingRouter = require("./routes/landing");
@@ -56,13 +51,14 @@ app.use(
 	})
 );
 
-//DB
-mongoose.connect(process.env.DB_USERURI).then(() => {
-	monitorMongoose(mongoose);
-	console.log("mongodb, conectado");
+// Set local context, clear session context -- from Ethan Brown's book, 'Web Development with Node & Express'
+app.use(function (req, res, next) {
+	res.locals.context = req.session.context;
+	delete req.session.context;
+	next();
 });
 
-//
+//Registered routes
 app.use("/", landingRouter);
 app.use("/login", loginRouter);
 app.use("/auth", authRouter);
@@ -70,8 +66,7 @@ app.use("/dashboard", dashboardRouter);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
-	//req.session.context="Page not found";
-
+	req.session.context="Page not found";
 	next(createError(404));
 });
 
@@ -85,6 +80,5 @@ app.use(function (err, req, res, next) {
 	res.status(err.status || 500);
 	res.render("error", { context: req.session.context });
 });
-
 console.dir(`https://localhost:3000`);
 module.exports = app;

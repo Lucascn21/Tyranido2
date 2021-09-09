@@ -1,7 +1,8 @@
 const { encrypt, compare } = require("../helpers/handleBcrypt");
+//Models
 const userModel = require("../models/User");
 
-// POST /register
+// POST /auth/register
 exports.register = async (req, res, next) => {
 	//Get this from the body
 	const { email, username, password } = req.body;
@@ -10,7 +11,7 @@ exports.register = async (req, res, next) => {
 
 	if (user) {
 		req.session.context = "user/email already exist";
-		return res.redirect("/");
+		return res.redirect("/register");
 	}
 
 	//build our model from the body
@@ -22,16 +23,15 @@ exports.register = async (req, res, next) => {
 
 	try {
 		await user.save();
-		req.session.context = "successfulRegister";
-		res.redirect("/dashboard");
+		req.session.context = "successfulRegister"; //TODO: Maybe, login on register.
+		res.redirect("/login");
 	} catch (error) {
 		req.session.context = "errorsInTheForm";
 		return res.redirect("/");
 	}
 };
 
-
-// POST /login
+// POST /auth/login
 exports.login = async (req, res, next) => {
 	const { username, password } = req.body;
 	const user = await userModel.findOne({ username });
@@ -45,7 +45,7 @@ exports.login = async (req, res, next) => {
 		if (passwordMatches) {
 			res.status(200);
 			req.session.context = "SuccesfulLogin";
-			req.session.isAuth=true;
+			req.session.isAuth = true;
 			return res.redirect("/dashboard");
 		} else {
 			res.status(409);
@@ -53,8 +53,7 @@ exports.login = async (req, res, next) => {
 			return res.redirect("/login");
 		}
 	} catch (error) {
-		req.session.context="401";
+		req.session.context = "401";
 		next(createError(401));
 	}
-
 };

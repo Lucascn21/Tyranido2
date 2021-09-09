@@ -9,54 +9,45 @@ const app = require("../app");
 const debug = require("debug")("tbd:server");
 const https = require("https");
 const fs = require("fs");
+const { connectDB } = require("../helpers/database");
 
-/**
- * Get port from environment and store in Express.
- */
+async function main() {
+	let port = normalizePort(process.env.PORT || "3000");
+	app.set("port", port);
+	// Connect to DB
+	await connectDB();
+	// Start server
+	try {
+		/**
+		 * ======================================================================
+		 * Create HTTPS server if certificate files exist.
+		 * ======================================================================
+		 */
+		const options = {
+			key: fs.readFileSync("etc/key.pem"),
+			cert: fs.readFileSync("etc/cert.pem"),
+			rejectUnauthorized: false, //Not for production
+		};
 
-let port = normalizePort(process.env.PORT || "3000");
-app.set("port", port);
+		// Create HTTPS server.
+		const server = https.createServer(options, app);
+		server.listen(port);
+	} catch (err) {
+		if (err.code === "ENOENT") {
+			debug("There are no SSL certificate files.");
+		} else {
+			debug(`ERROR: ${err.message || err}.`);
+		}
+	}
 
-/**
- * ======================================================================
- * Creates HTTPS server if there exist certificate files.
- * ======================================================================
- */
-try {
-	const options = {
-		key: fs.readFileSync("etc/key.pem"),
-		cert: fs.readFileSync("etc/cert.pem"),
-		rejectUnauthorized: false, //Not for production
-	};
-
-	// Create HTTPS server.
-	const server = https.createServer(options, app);
-
-	server.listen(port);
-} catch (err) {
-	if (err.code === "ENOENT") {
-		debug("There are no SSL certificate files. No HTTPS Server created.");
-	} else {
-		debug(`ERROR: ${err.message || err}.`);
+	/**
+	 * Normalize a port into a number, string, or false.
+	 */
+	function normalizePort(val) {
+		let port = parseInt(val, 10);
+		if (isNaN(port)) return val;
+		if (port >= 0) return port;
+		return false;
 	}
 }
-
-/**
- * Normalize a port into a number, string, or false.
- */
-
-function normalizePort(val) {
-	let port = parseInt(val, 10);
-
-	if (isNaN(port)) {
-		// named pipe
-		return val;
-	}
-
-	if (port >= 0) {
-		// port number
-		return port;
-	}
-
-	return false;
-}
+main();
