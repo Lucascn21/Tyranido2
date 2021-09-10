@@ -1,16 +1,12 @@
 // sessionAuthMW
-const isAuth = (req, res, next) => {
+const isAuth = async (req, res, next) => {
 	if (req.session.isAuth) {
-		console.dir(res.locals)
-		console.dir(req.session)
 
-		//res.locals.user="vine de isAuth";
-		
 		next();
 	} else {
 		res.status(401);
 		req.session.context = "Not Authorized";
-		res.redirect("/");
+		res.redirect("/login");
 	}
 };
 

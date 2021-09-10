@@ -8,6 +8,7 @@ const logger = require("morgan");
 const expressLayouts = require("express-ejs-layouts");
 const session = require("express-session");
 const MongoDBStore = require("connect-mongodb-session")(session);
+const { v4: uuidv4 } = require("uuid");
 
 //Routers
 var htmlRouter = require("./routes/index");
@@ -26,7 +27,7 @@ app.use(express.static(path.join(__dirname, "public")));
 app.use(expressLayouts);
 
 const store = new MongoDBStore({
-	uri: process.env.DB_SESSURI,
+	uri: process.env.DB_USERURI,
 	collection: process.env.DB_COLLECTION_SESSION,
 });
 
@@ -38,11 +39,12 @@ store.on("error", function (error) {
 //Session
 app.use(
 	session({
+		genid: ()=>{return uuidv4()},
 		secret: process.env.SESS_SECRET,
 		resave: false,
 		saveUninitialized: false,
 		cookie: {
-			maxAge: 1000 * 60 * 60 * 24 * 7, // 1 week
+			maxAge: null,
 			httpOnly: true,
 			secure: true,
 			sameSite: true,
@@ -54,6 +56,7 @@ app.use(
 // Set local context, clear session context -- from Ethan Brown's book, 'Web Development with Node & Express'
 app.use(function (req, res, next) {
 	res.locals.context = req.session.context;
+
 	delete req.session.context;
 	next();
 });

@@ -19,5 +19,4 @@ const monitorMongoose = (mongoose) => {
 	});
 };
 
-
-module.exports={monitorMongoose}
+module.exports = { monitorMongoose };

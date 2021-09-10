@@ -14,6 +14,8 @@ const { isNotAuth, isAuth } = require("../middlewares/session");
 // autologout
 //router.all('*',sessionController.checkLoginExpires);
 
+
+
 /* GET home page. */
 router.get("/", isNotAuth, landingController.index);
 

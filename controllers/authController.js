@@ -1,4 +1,5 @@
 const { encrypt, compare } = require("../helpers/handleBcrypt");
+
 //Models
 const userModel = require("../models/User");
 
@@ -18,6 +19,7 @@ exports.register = async (req, res, next) => {
 		username,
 		email,
 		password: await encrypt(password, parseInt(process.env.HASH_SALT)),
+		sessID: req.sessionID,
 	});
 
 	try {
@@ -25,6 +27,7 @@ exports.register = async (req, res, next) => {
 		req.session.context = "successfulRegister"; //TODO: Maybe, login on register.
 		res.redirect("/login");
 	} catch (error) {
+		console.dir(error)
 		req.session.context = "errorsInTheForm";
 		return res.redirect("/");
 	}
@@ -42,10 +45,22 @@ exports.login = async (req, res, next) => {
 		}
 		const passwordMatches = await compare(password, user.password);
 		if (passwordMatches) {
+			console.dir(req.body)
 			res.status(200);
 			req.session.context = "SuccesfulLogin";
 			req.session.isAuth = true;
-			req.session.user = user.id;
+			req.session.owner = username;
+			req.session.sessID = req.sessionID;
+			user.sessID=req.sessionID;
+			req.session.userSessID = user.sessID;
+			await user.save();
+			res.locals={usernamelocal:'bla'}
+			
+			console.dir(res.locals)
+			console.dir(req.cookies);
+			console.dir(`${req.sessionID} vs. ${req.cookies["connect.sid"]}`);
+			console.dir(`${req.cookies}`);
+
 			return res.redirect("/dashboard");
 		} else {
 			res.status(409);
