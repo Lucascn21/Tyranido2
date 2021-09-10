@@ -12,13 +12,15 @@
 
 @import "./layout/body";
 @import "./layout/main";
-@import "./layout/form";
 @import "./layout/section";
 @import "./layout/header";
 @import "./layout/footer";
 
+@import "./components/registerAndLogin";
+
 @import "./pages/landing";
-@import "./pages/page2";
+@import "./pages/login";
+@import "./pages/dashboard";
 /*
 @import "./components/component1";
 @import "./components/component2";

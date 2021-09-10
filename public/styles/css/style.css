@@ -20,23 +20,6 @@ body nav {
   background-color: #000000;
   color: #ffffff; }
 
-main {
-  display: grid;
-  grid-area: main;
-  grid-template-areas: ". . ." ". section ." ". . .";
-  background-color: #1b1824;
-  grid-template-columns: minmax(1%, 5%) auto minmax(1%, 5%);
-  grid-template-rows: minmax(1%, 5%) auto minmax(1%, 5%); }
-
-form {
-  display: contents;
-  flex-direction: column;
-  justify-content: center;
-  height: -webkit-fill-available; }
-  form .input-group-text {
-    background-color: #ffc107;
-    border-color: #ffc107; }
-
 section {
   grid-area: section;
   text-align: center;
@@ -73,6 +56,27 @@ footer {
     margin-bottom: 0px;
     margin-top: 10px; }
 
+.mainLanding {
+  grid-template-columns: minmax(1%, 5%) auto minmax(1%, 5%);
+  grid-template-rows: minmax(1%, 5%) auto minmax(1%, 5%); }
+
+.formLanding {
+  display: contents;
+  flex-direction: column;
+  justify-content: center;
+  height: -webkit-fill-available; }
+  .formLanding .input-group-text {
+    background-color: #ffc107;
+    border-color: #ffc107; }
+  .formLanding button {
+    padding: 0.5rem; }
+
+main {
+  display: grid;
+  grid-area: main;
+  grid-template-areas: ". . ." ". section ." ". . .";
+  background-color: #1b1824; }
+
 /*
 @import "./components/component1";
 @import "./components/component2";
@@ -80,8 +84,8 @@ footer {
 */
 @media screen and (min-width: 750px) {
   * {
-    font-size: x-large; } }
+    font-size: large; } }
 
 @media screen and (min-width: 990px) {
   * {
-    font-size: x-large; } }
+    font-size: large; } }

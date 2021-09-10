@@ -1,0 +1,10 @@
+main{
+	display: grid;
+	grid-area: main;
+	grid-template-areas:
+		". . ."
+		". section ."
+		". . .";
+	background-color: #1b1824;
+
+}

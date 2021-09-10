@@ -1,4 +1,9 @@
-form {
+.mainLanding{
+	grid-template-columns: minmax(1%, 5%) auto minmax(1%, 5%);
+	grid-template-rows: minmax(1%, 5%) auto minmax(1%, 5%);
+}
+
+.formLanding{
 	display: contents;
 	flex-direction: column;
 	justify-content: center;
@@ -7,5 +12,8 @@ form {
 		background-color: $md-amber-500;
 		border-color: $md-amber-500;
 	}
-
+    button{
+        padding:0.5rem;
+    }
 }
+
