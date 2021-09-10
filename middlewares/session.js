@@ -1,6 +1,11 @@
 // sessionAuthMW
 const isAuth = (req, res, next) => {
 	if (req.session.isAuth) {
+		console.dir(res.locals)
+		console.dir(req.session)
+
+		//res.locals.user="vine de isAuth";
+		
 		next();
 	} else {
 		res.status(401);

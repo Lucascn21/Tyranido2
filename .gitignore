@@ -80,3 +80,6 @@ cert.pem
 key.pem
 thoughts.txt
 .gitignore
+
+#dontmindme
+trash

@@ -8,7 +8,6 @@ exports.register = async (req, res, next) => {
 	const { email, username, password } = req.body;
 
 	let user = (await userModel.findOne({ email })) || (await userModel.findOne({ username }));
-
 	if (user) {
 		req.session.context = "user/email already exist";
 		return res.redirect("/register");
@@ -46,6 +45,7 @@ exports.login = async (req, res, next) => {
 			res.status(200);
 			req.session.context = "SuccesfulLogin";
 			req.session.isAuth = true;
+			req.session.user = user.id;
 			return res.redirect("/dashboard");
 		} else {
 			res.status(409);

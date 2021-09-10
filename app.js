@@ -10,10 +10,7 @@ const session = require("express-session");
 const MongoDBStore = require("connect-mongodb-session")(session);
 
 //Routers
-const landingRouter = require("./routes/landing");
-const loginRouter = require("./routes/login");
-const authRouter = require("./routes/auth");
-const dashboardRouter = require("./routes/dashboard");
+var htmlRouter = require("./routes/index");
 
 const app = express();
 
@@ -46,6 +43,9 @@ app.use(
 		saveUninitialized: false,
 		cookie: {
 			maxAge: 1000 * 60 * 60 * 24 * 7, // 1 week
+			httpOnly: true,
+			secure: true,
+			sameSite: true,
 		},
 		store: store,
 	})
@@ -59,14 +59,11 @@ app.use(function (req, res, next) {
 });
 
 //Registered routes
-app.use("/", landingRouter);
-app.use("/login", loginRouter);
-app.use("/auth", authRouter);
-app.use("/dashboard", dashboardRouter);
+app.use("/", htmlRouter);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
-	req.session.context="Page not found";
+	req.session.context = "Page not found";
 	next(createError(404));
 });
 
@@ -78,7 +75,7 @@ app.use(function (err, req, res, next) {
 
 	// render the error page
 	res.status(err.status || 500);
-	res.render("error", { context: req.session.context });
+	res.render("error", { context: res.locals.context });
 });
 console.dir(`https://localhost:3000`);
 module.exports = app;
