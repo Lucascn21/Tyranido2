@@ -10,6 +10,7 @@ const session = require("express-session");
 const MongoDBStore = require("connect-mongodb-session")(session);
 const { v4: uuidv4 } = require("uuid");
 
+
 //Routers
 var htmlRouter = require("./routes/index");
 
@@ -39,7 +40,9 @@ store.on("error", function (error) {
 //Session
 app.use(
 	session({
-		genid: ()=>{return uuidv4()},
+		genid: () => {
+			return uuidv4();
+		},
 		secret: process.env.SESS_SECRET,
 		resave: false,
 		saveUninitialized: false,
@@ -53,11 +56,47 @@ app.use(
 	})
 );
 
+//Mw authsomething
+app.use(function (req, res, next) {
+
+	/*
+	//Sess
+	//req.session.context = "SuccesfulRequest";
+	//req.session.isAuth = false; //Not sure
+	res.cookie('signed_monster', 'nom noms', { signed: true });
+	console.dir(`MW del frente`);
+	//Local
+	res.locals.sessID = res.locals.sessID || null;
+	res.locals.loggedIn =  res.locals.loggedIn || null ;
+	res.locals.user = res.locals.user || null;
+	res.locals.context = res.locals.context ||  null;
+	console.dir("Locals");
+	console.dir(res.locals);
+	let { sessID, loggedIn, user, context } = res.locals;
+	req.user = { sessID, loggedIn, user, context };
+	console.dir("User");
+	console.dir(req.user);
+
+	//	return res.redirect("/register");
+	
+	
+
+	/*
+console.dir(`MW del frente`);
+if (!res.locals.sessID) res.locals.sessID = req.sessionID;
+//res.locals.loggedIn=false;
+res.locals.user =req.session.owner || 'none';
+console.dir(res.locals);
+console.dir(`${req.sessionID} vs. ${req.cookies["connect.sid"]}`);
+*/
+	next();
+});
+
 // Set local context, clear session context -- from Ethan Brown's book, 'Web Development with Node & Express'
 app.use(function (req, res, next) {
 	res.locals.context = req.session.context;
 
-	delete req.session.context;
+	//delete req.session.context;
 	next();
 });
 

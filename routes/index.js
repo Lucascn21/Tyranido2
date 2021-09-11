@@ -14,8 +14,6 @@ const { isNotAuth, isAuth } = require("../middlewares/session");
 // autologout
 //router.all('*',sessionController.checkLoginExpires);
 
-
-
 /* GET home page. */
 router.get("/", isNotAuth, landingController.index);
 
@@ -24,9 +22,17 @@ router.get("/dashboard", isAuth, dashboardController.index);
 
 // Post Auth/register || login
 router.post("/auth/register", authController.register);
-router.post("/auth/login", authController.login	);
-
-
+router.post("/auth/login", authController.login);
+router.post("/logout", (req, res) => {
+	if (req.session.isAuth) {
+		req.session.destroy();
+     
+		res.clearCookie("connect.sid"); // clean up!
+		return res.redirect("/");
+	} else {
+		return res.redirect("/dashboard");
+	}
+});
 
 /* GET register route */
 router.get("/register", isNotAuth, landingController.index);
@@ -34,9 +40,6 @@ router.get("/register", isNotAuth, landingController.index);
 /* GET login page. */
 router.get("/login", isNotAuth, loginController.index);
 
-
 // logout - close login session
-
-
 
 module.exports = router;

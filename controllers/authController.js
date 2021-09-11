@@ -27,7 +27,7 @@ exports.register = async (req, res, next) => {
 		req.session.context = "successfulRegister"; //TODO: Maybe, login on register.
 		res.redirect("/login");
 	} catch (error) {
-		console.dir(error)
+		console.dir(error);
 		req.session.context = "errorsInTheForm";
 		return res.redirect("/");
 	}
@@ -45,22 +45,26 @@ exports.login = async (req, res, next) => {
 		}
 		const passwordMatches = await compare(password, user.password);
 		if (passwordMatches) {
-			console.dir(req.body)
+			console.dir(req.body);
 			res.status(200);
+			//Sess
 			req.session.context = "SuccesfulLogin";
 			req.session.isAuth = true;
 			req.session.owner = username;
 			req.session.sessID = req.sessionID;
-			user.sessID=req.sessionID;
 			req.session.userSessID = user.sessID;
-			await user.save();
-			res.locals={usernamelocal:'bla'}
-			
-			console.dir(res.locals)
-			console.dir(req.cookies);
-			console.dir(`${req.sessionID} vs. ${req.cookies["connect.sid"]}`);
-			console.dir(`${req.cookies}`);
 
+			//Update sessID
+			user.sessID= req.sessionID;
+			await user.save();
+
+			console.dir(`MW del authcontroller`);
+			//Local
+			res.locals.sessID = req.sessionID;
+			res.locals.loggedIn=true;
+			res.locals.user=username;
+			res.locals.context=req.session.context;
+			console.dir(res.locals);
 			return res.redirect("/dashboard");
 		} else {
 			res.status(409);

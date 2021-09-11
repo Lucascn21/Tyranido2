@@ -6,4 +6,7 @@
 		<p style="color:yellow">	<% if (usernamelocal) { %>
 			<%= usernamelocal %>
 			<% } %></p>
+			<form action="/logout" method="post">
+				<input type="submit" name="logout" value="logout" />
+			</form>
 </main>

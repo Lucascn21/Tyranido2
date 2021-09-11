@@ -1,7 +1,8 @@
 // sessionAuthMW
 const isAuth = async (req, res, next) => {
 	if (req.session.isAuth) {
-
+		console.dir(`Session MW`);
+		console.dir(res.locals);
 		next();
 	} else {
 		res.status(401);
