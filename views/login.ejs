@@ -1,18 +1,19 @@
 <main class="mainLanding">
 	<section class="sectionLanding">
+		<nav aria-label="...">
+			<ul class="pagination">
+				<li class="page-item" aria-current="page">
+					<a class="page-link bg-dark border-top-0 border-bottom-0 border-start-0 border-secondary" href="/"
+						>Register</a
+					>
+				</li>
+				<li class="page-item active disabled">
+					<a class="page-link bg-dark border-top-0 border-bottom-0 border-end-0" href="#">Login</a>
+				</li>
+			</ul>
+		</nav>
 		<form id="formLogin" class="formLanding" action="auth/login" method="post">
-			<nav aria-label="...">
-				<ul class="pagination">
-					<li class="page-item" aria-current="page">
-						<a class="page-link bg-dark border-top-0 border-bottom-0 border-start-0 border-secondary" href="/"
-							>Register</a
-						>
-					</li>
-					<li class="page-item active disabled">
-						<a class="page-link bg-dark border-top-0 border-bottom-0 border-end-0" href="#">Login</a>
-					</li>
-				</ul>
-			</nav>
+		
 			<label>Username</label>
 			<div class="input-group d-flex justify-content-center">
 				<span class="input-group-text"><i class="fas fa-user" aria-hidden="true"></i></span>
@@ -22,7 +23,6 @@
 					name="username"
 					placeholder="Username"
 					style="
-						color: aliceblue;
 						text-shadow: 2px 2px rgb(61 4 61);
 						box-shadow: 0 4px 8px 0 rgb(0 0 0 / 20%), 0 6px 20px 0 rgb(0 0 0 / 19%);
 					"
@@ -38,7 +38,6 @@
 					name="password"
 					placeholder="Password"
 					style="
-						color: aliceblue;
 						text-shadow: 2px 2px rgb(61 4 61);
 						box-shadow: 0 4px 8px 0 rgb(0 0 0 / 20%), 0 6px 20px 0 rgb(0 0 0 / 19%);
 					"
@@ -46,9 +45,13 @@
 				/>
 			</div>
 			<p>
-				<button formmethod="POST" form="formLogin" type="submit">Login</button>
+				<button id='loginButton' formmethod="POST" form="formLogin" type="submit">Login</button>
 			</p>
-		
+			<p>
+				<label>
+					<sub>Test account</sub><br> <strong>Test1234:Password1234</strong>
+				</label>
+			</p>
 		</form>
 		<p>	<% if (context) { %>
 			<%= context %>

@@ -28,11 +28,34 @@
 */
 
 * {
-	@media screen and (min-width: $medium) {
-		font-size: large;
-	}
-	@media screen and (min-width: $large) {
-		font-size: large;
-	}
+	//	@media screen and (min-width: $medium) {
+	//		font-size: large;
+	//}
+	//@media screen and (min-width: $large) {
+	//	font-size: large;
+	//	}
 }
 
+input:focus-visible {
+	outline: none;
+	background-color: $md-amber-100;
+}
+
+/* Change the white to any color */
+input:-webkit-autofill,
+input:-webkit-autofill:hover, 
+input:-webkit-autofill:focus, 
+input:-webkit-autofill:active
+{
+// -webkit-box-shadow: 0 0 0 30px rgb(66, 63, 63) inset !important;
+}
+
+input:-webkit-autofill
+{
+ -webkit-text-fill-color: greenyellow !important;
+}
+
+input{
+	color: greenyellow;
+	
+}

@@ -1,19 +1,54 @@
-.mainLanding{
+.mainLanding {
 	grid-template-columns: minmax(1%, 5%) auto minmax(1%, 5%);
 	grid-template-rows: minmax(1%, 5%) auto minmax(1%, 5%);
 }
 
-.formLanding{
-	display: contents;
+.formLanding {
 	flex-direction: column;
 	justify-content: center;
 	height: -webkit-fill-available;
+	height: inherit;
+	display: flex;
+
 	.input-group-text {
 		background-color: $md-amber-500;
 		border-color: $md-amber-500;
 	}
-    button{
-        padding:0.5rem;
-    }
+	button {
+		padding: 0.5rem;
+	}
+
+	#registerButton {
+		background-color: $md-green-800;
+	}
+	#loginButton {
+		background-color: $md-green-800;
+	}
+	#resetButton {
+		background-color: $md-red-800;
+	}
 }
 
+@media screen and (max-width: 768px) {
+	.formLanding {
+		padding-bottom: 50px;
+	}
+	html {
+		height: 100%;
+		width: 100%;
+	}
+	body {
+		width: 100%;
+		height: 100%;
+	}
+	section {
+		width: 100%;
+		height: 100%;
+	}
+}
+
+@media screen and (min-width: 768px) {
+	* {
+		font-size: x-large;
+	}
+}
