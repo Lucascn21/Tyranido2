@@ -3,6 +3,9 @@ body {
 	height: 100vh;
 	@include superCentre;
 
+	width: 100%;
+	height: 100%;
+
 	background-color: $md-amber-800;
 
 	grid-template-areas:

@@ -9,6 +9,10 @@
 	height: -webkit-fill-available;
 	height: inherit;
 	display: flex;
+	padding-bottom: 50px;
+	.span-Context {
+		align-self: center;
+	}
 
 	.input-group-text {
 		background-color: $md-amber-500;

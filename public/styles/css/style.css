@@ -8,6 +8,8 @@ body {
   margin: 0;
   padding: 0;
   list-style: none;
+  width: 100%;
+  height: 100%;
   background-color: #ff8f00;
   grid-template-areas: "nav" "main" "footer";
   grid-template-rows: 7% auto 7%; }
@@ -17,7 +19,9 @@ section {
   text-align: center;
   background-color: #000000;
   border: 1px solid #263238;
-  place-self: center; }
+  place-self: center;
+  width: 100%;
+  height: 100%; }
   section p {
     margin: 1rem; }
   section nav {
@@ -65,7 +69,10 @@ footer {
   justify-content: center;
   height: -webkit-fill-available;
   height: inherit;
-  display: flex; }
+  display: flex;
+  padding-bottom: 50px; }
+  .formLanding .span-Context {
+    align-self: center; }
   .formLanding .input-group-text {
     background-color: #ffc107;
     border-color: #ffc107; }
@@ -107,20 +114,10 @@ main {
 .input-group {
   padding: 0.2rem; }
 
-.formLanding {
-  padding-bottom: 50px; }
-
 html {
   height: 100%;
   width: 100%; }
 
-body {
-  width: 100%;
-  height: 100%; }
-
-section {
-  width: 100%;
-  height: 100%; }
-
-.formLanding .span-Context {
-  align-self: center; }
+@media (min-width: 1024px) and (max-width: 1280px) {
+  * {
+    font-size: xx-large; } }
