@@ -6,7 +6,8 @@ const isAuth = async (req, res, next) => {
 		next();
 	} else {
 		res.status(401);
-		req.session.context = "Not Authorized";
+		req.session.message = "Not Authorized";
+		req.session.alertType = "warning";
 		res.redirect("/login");
 	}
 };
@@ -15,7 +16,8 @@ const isAuth = async (req, res, next) => {
 const isNotAuth = (req, res, next) => {
 	if (req.session.isAuth) {
 		res.status(401);
-		req.session.context = "AlreadyLoggedIn";
+		req.session.message = "AlreadyLoggedIn";
+		req.session.alertType = "warning";
 		res.redirect("/dashboard");
 	} else {
 		next();

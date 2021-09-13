@@ -10,7 +10,8 @@ exports.register = async (req, res, next) => {
 
 	let user = (await userModel.findOne({ email })) || (await userModel.findOne({ username }));
 	if (user) {
-		req.session.context = "user/email already exist";
+		req.session.message = "user/email already exist";
+		req.session.alertType = "warning";
 		return res.redirect("/register");
 	}
 
@@ -24,11 +25,13 @@ exports.register = async (req, res, next) => {
 
 	try {
 		await user.save();
-		req.session.context = "successfulRegister"; //TODO: Maybe, login on register.
+		req.session.message = "Register successful";
+		req.session.alertType = "success";
 		res.redirect("/login");
 	} catch (error) {
 		console.dir(error);
-		req.session.context = "errorsInTheForm";
+		req.session.alertType = "danger";
+		req.session.message = `Form error`;
 		return res.redirect("/");
 	}
 };
@@ -40,39 +43,43 @@ exports.login = async (req, res, next) => {
 	try {
 		if (!user) {
 			res.status(409);
-			req.session.context = "failedLoginWrongCredentials";
+			req.session.message = "Login failed - Wrong credentials";
+			req.session.alertType = "warning";
 			return res.redirect("/login");
 		}
 		const passwordMatches = await compare(password, user.password);
 		if (passwordMatches) {
-			console.dir(req.body);
 			res.status(200);
 			//Sess
-			req.session.context = "SuccesfulLogin";
+			req.session.message = "Login successful";
+			req.session.alertType = "success";
 			req.session.isAuth = true;
 			req.session.owner = username;
 			req.session.sessID = req.sessionID;
 			req.session.userSessID = user.sessID;
-
-			//Update sessID
-			user.sessID= req.sessionID;
-			await user.save();
-
-			console.dir(`MW del authcontroller`);
-			//Local
-			res.locals.sessID = req.sessionID;
-			res.locals.loggedIn=true;
-			res.locals.user=username;
-			res.locals.context=req.session.context;
-			console.dir(res.locals);
 			return res.redirect("/dashboard");
 		} else {
 			res.status(409);
-			req.session.context = "failedLoginWrongCredentials";
+			req.session.message = `Login failed - Wrong credentials`;
+			req.session.alertType = "warning";
 			return res.redirect("/login");
 		}
 	} catch (error) {
-		req.session.context = "401";
+		req.session.message = `Forbidden 401`;
+		req.session.alertType = "danger";
 		next(createError(401));
+	}
+};
+
+// POST /auth/logout
+exports.logout = async (req, res, next) => {
+	if (req.session.isAuth) {
+		req.session.destroy();
+		res.clearCookie("connect.sid"); // clean up!
+		return res.redirect("/");
+	} else {
+		req.session.message = `Couldnt logout 500`;
+		req.session.alertType = "danger";
+		next(createError(500));
 	}
 };
