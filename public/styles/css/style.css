@@ -12,19 +12,11 @@ body {
   grid-template-areas: "nav" "main" "footer";
   grid-template-rows: 7% auto 7%; }
 
-body nav {
-  display: flex;
-  align-items: center;
-  justify-content: space-around;
-  grid-area: nav;
-  background-color: #000000;
-  color: #ffffff; }
-
 section {
   grid-area: section;
   text-align: center;
   background-color: #000000;
-  border: 1px solid #343a40;
+  border: 1px solid #263238;
   place-self: center; }
   section p {
     margin: 1rem; }
@@ -46,6 +38,14 @@ section {
     background-color: #000000;
     border-color: #ffffff;
     color: #ffffff; }
+
+body #navBody {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  grid-area: nav;
+  background-color: #000000;
+  color: #ffffff; }
 
 footer {
   grid-area: footer;
@@ -77,23 +77,26 @@ footer {
     background-color: #2e7d32; }
   .formLanding #resetButton {
     background-color: #c62828; }
+  .formLanding input:focus-visible {
+    outline: none;
+    background-color: #ffecb3; }
+  .formLanding input:-webkit-autofill {
+    -webkit-text-fill-color: greenyellow !important; }
+  .formLanding input {
+    color: greenyellow; }
 
-@media screen and (max-width: 768px) {
-  .formLanding {
-    padding-bottom: 50px; }
-  html {
-    height: 100%;
-    width: 100%; }
-  body {
-    width: 100%;
-    height: 100%; }
-  section {
-    width: 100%;
-    height: 100%; } }
-
-@media screen and (min-width: 768px) {
-  * {
-    font-size: x-large; } }
+#navRegister ul,
+#navLogin ul {
+  background: #263238;
+  margin-left: 0;
+  border-bottom: 0px solid #778;
+  font: bold 12px Verdana, sans-serif; }
+  #navRegister ul .current,
+  #navLogin ul .current {
+    background: black;
+    border-right: 2.5px solid #263238;
+    border-top: 1px solid #263238;
+    border-bottom: 0px solid #778; }
 
 main {
   display: grid;
@@ -104,18 +107,20 @@ main {
 .input-group {
   padding: 0.2rem; }
 
-/*
-@import "./components/component1";
-@import "./components/component2";
+.formLanding {
+  padding-bottom: 50px; }
 
-*/
-input:focus-visible {
-  outline: none;
-  background-color: #ffecb3; }
+html {
+  height: 100%;
+  width: 100%; }
 
-/* Change the white to any color */
-input:-webkit-autofill {
-  -webkit-text-fill-color: greenyellow !important; }
+body {
+  width: 100%;
+  height: 100%; }
 
-input {
-  color: greenyellow; }
+section {
+  width: 100%;
+  height: 100%; }
+
+.formLanding .span-Context {
+  align-self: center; }

@@ -1,0 +1,12 @@
+body {
+	#navBody {
+		display: flex;
+		align-items: center;
+		justify-content: space-around;
+		grid-area: nav;
+		background-color: $md-black;
+		color: $md-white;
+	}
+
+   
+}
