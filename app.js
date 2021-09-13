@@ -56,15 +56,14 @@ app.use(
 	})
 );
 
-//Mw authsomething
-app.use(function (req, res, next) {
-	next();
-});
+
 
 // Set local context, clear session context -- from Ethan Brown's book, 'Web Development with Node & Express'
 app.use(function (req, res, next) {
-	res.locals.context = req.session.context;
-	//delete req.session.context;
+	res.locals.message = req.session.message;
+	res.locals.alertType = req.session.alertType;
+	delete req.session.message;
+	delete req.session.alertType;
 	next();
 });
 
