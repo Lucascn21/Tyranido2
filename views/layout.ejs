@@ -21,11 +21,17 @@
 	</head>
 
 	<body>
-		<nav>
+		<nav id="navBody">
 			<header>Tyranido</header>
-			<a href=".">A</a> <a href=".">B</a><a href=".">C</a>
+			<a href="dashboard">A</a> <a href="user">B</a>
+			<form action="/auth/logout" method="post">
+				<input type="submit" name="logout" value="logout" />
+			</form>
 		</nav>
+
 		<%- body %>
+	
+
 		<footer><p>Some rights reserved</p></footer>
 	</body>
 </html>

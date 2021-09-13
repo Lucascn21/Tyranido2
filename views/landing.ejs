@@ -1,14 +1,16 @@
 <main class="mainLanding">
 	<section class="sectionLanding">
-		<nav aria-label="...">
-			<ul class="pagination">
-				<li class="page-item active disabled" aria-current="page">
-					<a class="page-link bg-dark border-top-0 border-bottom-0 border-start-0 border-secondary" href="#"
-						>Register</a
-					>
-				</li>
-				<li class="page-item"><a class="page-link bg-dark border-0" href="/login">Login</a></li>
-			</ul>
+		<nav id="navRegister">
+		<ul class="nav nav-tabs">
+			<li class="nav-item">
+			  <a class="nav-link disabled current" aria-current="page" href="#">Register</a>
+			</li>
+			<li class="nav-item">
+			  <a class="nav-link" href="/login">Login</a>
+			  
+			</li>
+			
+		  </ul>
 		</nav>
 		<form id="formRegister" class="formLanding" action="auth/register" method="post">
 			<label>Email</label>
@@ -69,7 +71,8 @@
 				<button id="resetButton" type="reset">Reset form</button>
 				<button id="registerButton" formmethod="POST" form="formRegister" type="submit">Sign up</button>
 			</p>
+			<% if (message) { %><span class="alert alert-<%= alertType %> span-Context" role="alert"><%= message %></span><% } %>
 		</form>
-		<p><% if (context) { %> <%= context %> <% } %></p>
+
 	</section>
 </main>

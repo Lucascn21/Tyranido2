@@ -1,12 +1,3 @@
-<main>
-	<h1 style="color:yellow !important">I AM A DASHBOARD</h1>
-	<p style="color:yellow !important">	<% if (context) { %>
-		<%= context %>
-		<% } %></p>
-		<p style="color:yellow">	<% if (usernamelocal) { %>
-			<%= usernamelocal %>
-			<% } %></p>
-			<form action="/logout" method="post">
-				<input type="submit" name="logout" value="logout" />
-			</form>
+<main id="mainDashboard">
+	<% if (message) { %><span class="alert alert-<%= alertType %> span-Context" role="alert"><%= message %></span><% } %>
 </main>
