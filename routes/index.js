@@ -5,7 +5,9 @@ const dashboardController = require("../controllers/dashboardController");
 const authController = require("../controllers/authController");
 const landingController = require("../controllers/landingController");
 const loginController = require("../controllers/loginController");
+
 const { isNotAuth, isAuth } = require("../middlewares/session");
+
 
 //-----------------------------------------------------------
 
@@ -23,16 +25,7 @@ router.get("/dashboard", isAuth, dashboardController.index);
 // Post Auth/register || login
 router.post("/auth/register", authController.register);
 router.post("/auth/login", authController.login);
-router.post("/logout", (req, res) => {
-	if (req.session.isAuth) {
-		req.session.destroy();
-     
-		res.clearCookie("connect.sid"); // clean up!
-		return res.redirect("/");
-	} else {
-		return res.redirect("/dashboard");
-	}
-});
+router.post("/auth/logout", authController.logout);
 
 /* GET register route */
 router.get("/register", isNotAuth, landingController.index);
