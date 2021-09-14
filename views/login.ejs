@@ -1,6 +1,6 @@
-<main class="mainLanding">
-	<section class="sectionLanding">
-		<nav id="navLogin">
+<main class="main-landing">
+	<section class="section-landing">
+		<nav id="nav-login">
 			<ul class="nav nav-tabs">
 				<li class="nav-item">
 					<a class="nav-link" aria-current="page" href="/register">Register</a>
@@ -11,7 +11,7 @@
 			</ul>
 		</nav>
 
-		<form id="formLogin" class="formLanding" action="auth/login" method="post">
+		<form id="form-login" class="form-landing" action="auth/login" method="post">
 			<label>Username</label>
 			<div class="input-group d-flex justify-content-center">
 				<span class="input-group-text"><i class="fas fa-user" aria-hidden="true"></i></span>
@@ -43,7 +43,7 @@
 				/>
 			</div>
 			<p>
-				<button id="loginButton" formmethod="POST" form="formLogin" type="submit">Login</button>
+				<button id="login-button" formmethod="POST" form="form-login" type="submit">Login</button>
 			</p>
 
 			<% if (message) { %><span class="alert alert-<%= alertType %> span-Context" role="alert"><%= message %></span><% } %>

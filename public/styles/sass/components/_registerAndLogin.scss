@@ -1,9 +1,9 @@
-.mainLanding {
+.main-landing {
 	grid-template-columns: minmax(1%, 5%) auto minmax(1%, 5%);
 	grid-template-rows: minmax(1%, 5%) auto minmax(1%, 5%);
 }
 
-.formLanding {
+.form-landing {
 	flex-direction: column;
 	justify-content: center;
 	height: -webkit-fill-available;
@@ -22,13 +22,13 @@
 		padding: 0.5rem;
 	}
 
-	#registerButton {
+	#register-button {
 		background-color: $md-green-800;
 	}
-	#loginButton {
+	#login-button {
 		background-color: $md-green-800;
 	}
-	#resetButton {
+	#reset-button {
 		background-color: $md-red-800;
 	}
 	input:focus-visible {
@@ -45,8 +45,8 @@
 	}
 }
 
-#navRegister,
-#navLogin {
+#nav-register,
+#nav-login {
 	ul {
 		background: $md-blue-grey-900;
 		margin-left: 0;

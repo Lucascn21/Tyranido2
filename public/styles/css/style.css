@@ -43,7 +43,7 @@ section {
     border-color: #ffffff;
     color: #ffffff; }
 
-body #navBody {
+body #nav-body {
   display: flex;
   align-items: center;
   justify-content: space-around;
@@ -60,46 +60,46 @@ footer {
     margin-bottom: 0px;
     margin-top: 10px; }
 
-.mainLanding {
+.main-landing {
   grid-template-columns: minmax(1%, 5%) auto minmax(1%, 5%);
   grid-template-rows: minmax(1%, 5%) auto minmax(1%, 5%); }
 
-.formLanding {
+.form-landing {
   flex-direction: column;
   justify-content: center;
   height: -webkit-fill-available;
   height: inherit;
   display: flex;
   padding-bottom: 50px; }
-  .formLanding .span-Context {
+  .form-landing .span-Context {
     align-self: center; }
-  .formLanding .input-group-text {
+  .form-landing .input-group-text {
     background-color: #ffc107;
     border-color: #ffc107; }
-  .formLanding button {
+  .form-landing button {
     padding: 0.5rem; }
-  .formLanding #registerButton {
+  .form-landing #register-button {
     background-color: #2e7d32; }
-  .formLanding #loginButton {
+  .form-landing #login-button {
     background-color: #2e7d32; }
-  .formLanding #resetButton {
+  .form-landing #reset-button {
     background-color: #c62828; }
-  .formLanding input:focus-visible {
+  .form-landing input:focus-visible {
     outline: none;
     background-color: #ffecb3; }
-  .formLanding input:-webkit-autofill {
+  .form-landing input:-webkit-autofill {
     -webkit-text-fill-color: greenyellow !important; }
-  .formLanding input {
+  .form-landing input {
     color: greenyellow; }
 
-#navRegister ul,
-#navLogin ul {
+#nav-register ul,
+#nav-login ul {
   background: #263238;
   margin-left: 0;
   border-bottom: 0px solid #778;
   font: bold 12px Verdana, sans-serif; }
-  #navRegister ul .current,
-  #navLogin ul .current {
+  #nav-register ul .current,
+  #nav-login ul .current {
     background: black;
     border-right: 2.5px solid #263238;
     border-top: 1px solid #263238;
