@@ -1,9 +1,32 @@
-#main-dashboard{
-    #search-section{
+#main-dashboard {
+	grid-template-areas:
+		"movies-section"
+		"lookup-section";
+	grid-template-rows: 70% 30%;
+	#movies-section {
+		display: grid;
 
-    }
 
-    #lookup-section{
-        
-    }
+    
+        grid-auto-columns:  minmax(0, 1fr);
+        grid-auto-rows: minmax(0, 1fr);
+        grid-auto-flow: column;
+		grid-area: movies-section;
+    
+
+        .movie-card{
+
+            flex-shrink: 1;
+         //   width: fit-content;
+           // height: fit-content;
+        }
+	}
+
+	#lookup-section {
+     
+        background-color: $md-amber-100;
+		display: grid;
+		grid-area: lookup-section;
+	}
+   
 }

@@ -113,6 +113,22 @@ main {
 .input-group {
   padding: 0.2rem; }
 
+#main-dashboard {
+  grid-template-areas: "movies-section" "lookup-section";
+  grid-template-rows: 70% 30%; }
+  #main-dashboard #movies-section {
+    display: grid;
+    grid-auto-columns: minmax(0, 1fr);
+    grid-auto-rows: minmax(0, 1fr);
+    grid-auto-flow: column;
+    grid-area: movies-section; }
+    #main-dashboard #movies-section .movie-card {
+      flex-shrink: 1; }
+  #main-dashboard #lookup-section {
+    background-color: #ffecb3;
+    display: grid;
+    grid-area: lookup-section; }
+
 html {
   height: 100%;
   width: 100%; }
