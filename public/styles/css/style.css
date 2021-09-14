@@ -14,35 +14,6 @@ body {
   grid-template-areas: "nav" "main" "footer";
   grid-template-rows: 7% auto 7%; }
 
-section {
-  grid-area: section;
-  text-align: center;
-  background-color: #000000;
-  border: 1px solid #263238;
-  place-self: center;
-  width: 100%;
-  height: 100%; }
-  section p {
-    margin: 1rem; }
-  section nav {
-    display: inline; }
-  section input {
-    display: flex;
-    padding-left: 0.5rem;
-    border: 1px solid #dee2e6;
-    border-radius: 1rem;
-    background-color: #000000; }
-  section label {
-    color: #eeeeee; }
-    section label input {
-      display: inline; }
-  section button {
-    border: 1px solid #dee2e6;
-    border-radius: 1rem;
-    background-color: #000000;
-    border-color: #ffffff;
-    color: #ffffff; }
-
 body #nav-body {
   display: flex;
   align-items: center;
@@ -63,6 +34,34 @@ footer {
 .main-landing {
   grid-template-columns: minmax(1%, 5%) auto minmax(1%, 5%);
   grid-template-rows: minmax(1%, 5%) auto minmax(1%, 5%); }
+  .main-landing section {
+    grid-area: section;
+    text-align: center;
+    background-color: #000000;
+    border: 1px solid #263238;
+    place-self: center;
+    width: 100%;
+    height: 100%; }
+    .main-landing section p {
+      margin: 1rem; }
+    .main-landing section nav {
+      display: inline; }
+    .main-landing section input {
+      display: flex;
+      padding-left: 0.5rem;
+      border: 1px solid #dee2e6;
+      border-radius: 1rem;
+      background-color: #000000; }
+    .main-landing section label {
+      color: #eeeeee; }
+      .main-landing section label input {
+        display: inline; }
+    .main-landing section button {
+      border: 1px solid #dee2e6;
+      border-radius: 1rem;
+      background-color: #000000;
+      border-color: #ffffff;
+      color: #ffffff; }
 
 .form-landing {
   flex-direction: column;

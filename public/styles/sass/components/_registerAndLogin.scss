@@ -1,4 +1,43 @@
 .main-landing {
+	section {
+		grid-area: section;
+		text-align: center;
+		background-color: $md-black;
+		border: 1px solid $md-blue-grey-900;
+		place-self: center;
+
+		width: 100%;
+		height: 100%;
+
+		p {
+			margin: 1rem;
+		}
+
+		nav {
+			display: inline;
+		}
+		input {
+			display: flex;
+			padding-left: 0.5rem;
+			border: 1px solid #dee2e6;
+			border-radius: 1rem;
+			background-color: $md-black;
+		}
+		label {
+			color: $md-grey-200;
+			input {
+				display: inline;
+			}
+		}
+		button {
+			border: 1px solid #dee2e6;
+			border-radius: 1rem;
+			background-color: $md-black;
+			border-color: $md-white;
+			color: $md-white;
+		}
+	}
+
 	grid-template-columns: minmax(1%, 5%) auto minmax(1%, 5%);
 	grid-template-rows: minmax(1%, 5%) auto minmax(1%, 5%);
 }
