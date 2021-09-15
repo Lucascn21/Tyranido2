@@ -5,7 +5,7 @@ const dashboardController = require("../controllers/dashboardController");
 const authController = require("../controllers/authController");
 const landingController = require("../controllers/landingController");
 const loginController = require("../controllers/loginController");
-
+const searchController= require('../controllers/searchController')
 const { isNotAuth, isAuth } = require("../middlewares/session");
 
 
@@ -16,23 +16,23 @@ const { isNotAuth, isAuth } = require("../middlewares/session");
 // autologout
 //router.all('*',sessionController.checkLoginExpires);
 
-/* GET home page. */
+
 router.get("/", isNotAuth, landingController.index);
 
-/* GET dashboard */
-router.get("/dashboard", isAuth, dashboardController.index);
+router.get("/register", isNotAuth, landingController.index);
+router.get("/login", isNotAuth, loginController.index);
 
-// Post Auth/register || login
 router.post("/auth/register", authController.register);
 router.post("/auth/login", authController.login);
 router.post("/auth/logout", authController.logout);
 
-/* GET register route */
-router.get("/register", isNotAuth, landingController.index);
+router.get("/dashboard", isAuth, dashboardController.index);
 
-/* GET login page. */
-router.get("/login", isNotAuth, loginController.index);
+router.post("/search",  isAuth, searchController.search);
 
-// logout - close login session
+
+
+
+
 
 module.exports = router;

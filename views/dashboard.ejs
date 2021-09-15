@@ -1,9 +1,10 @@
 <main id="main-dashboard">
 	<% if (message) { %><span class="alert alert-<%= alertType %> span-Context" role="alert"><%= message %></span><% } %>
 	<section id="lookup-section">
-		<form>
-			<button type="submit" class="btn btn-primary">Search</button>
-			<input type="text" class="form-control" id="searchQuery" />
+
+			<form action="/search" id="searchForm" method="POST">
+			<button type="submit" formmethod="POST" form="searchForm" class="btn btn-primary">Search</button>
+			<input type="text" class="form-control" id="inputQuerySearch" name='searchQuery' />
 		</form>
 	</section>
 	<section id="movies-section">
@@ -117,17 +118,5 @@
 		</article>
 	</section>
 
-	<section id="pagination-section">
-		<nav>
-			<ul class="">
-				<li class="previous"><a class="page-link" href="#">Previous</a></li>
-				<div id="pages">
-					<li class="page-number"><a class="page-link" href="#">1</a></li>
-					<li class="page-number"><a class="page-link" href="#">2</a></li>
-					<li class="page-number"><a class="page-link" href="#">3</a></li>
-				</div>
-				<li class="next"><a class="page-link" href="#">Next</a></li>
-			</ul>
-		</nav>
-	</section>
+
 </main>

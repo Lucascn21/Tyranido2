@@ -1,10 +1,9 @@
 #main-dashboard {
 	grid-template-areas:
 		"lookup-section"
-		"movies-section"
-		"pagination-section";
+		"movies-section";
 
-	grid-template-rows: 5% auto 2.5%;
+	grid-template-rows: 5% auto;
 	#movies-section {
 		display: grid;
 
@@ -15,6 +14,7 @@
 		overflow: scroll;
 
 		.movie-card {
+			background-color: $md-brown-300;
 		}
 	}
 
@@ -29,36 +29,6 @@
 			width: -webkit-fill-available;
 			display: grid;
 			grid-template-columns: 0.5fr auto;
-		}
-	}
-	#pagination-section {
-		display: grid;
-		background-color: $md-amber-200;
-		grid-area: pagination-section;
-		ul {
-			text-align: center;
-			list-style: none;
-			margin-bottom:0px;
-			box-sizing: border-box;
-			padding-left:0px;
-			display: grid;
-			height: 100%;
-			grid-template-areas: "previous pages next";
-		}
-		.previous {
-			grid-area: previous;
-		}
-		#pages {
-			display: flex;
-			grid-area: pages;
-		}
-		.page-number, .page-link{
-			height: 100%;
-			display: block;
-			flex: 1;
-		}
-		.next {
-			grid-area: next;
 		}
 	}
 }
