@@ -1,32 +1,64 @@
 #main-dashboard {
 	grid-template-areas:
+		"lookup-section"
 		"movies-section"
-		"lookup-section";
-	grid-template-rows: 70% 30%;
+		"pagination-section";
+
+	grid-template-rows: 5% auto 2.5%;
 	#movies-section {
 		display: grid;
 
-
-    
-        grid-auto-columns:  minmax(0, 1fr);
-        grid-auto-rows: minmax(0, 1fr);
-        grid-auto-flow: column;
+		grid-template-columns: repeat(2, minmax(0, 1fr));
+		grid-auto-rows: minmax(0fr, 1fr);
+		//  grid-auto-flow: column;
 		grid-area: movies-section;
-    
+		overflow: scroll;
 
-        .movie-card{
-
-            flex-shrink: 1;
-         //   width: fit-content;
-           // height: fit-content;
-        }
+		.movie-card {
+		}
 	}
 
 	#lookup-section {
-     
-        background-color: $md-amber-100;
-		display: grid;
+		display: flex;
+
+		background-color: $md-amber-100;
+
 		grid-area: lookup-section;
+
+		form {
+			width: -webkit-fill-available;
+			display: grid;
+			grid-template-columns: 0.5fr auto;
+		}
 	}
-   
+	#pagination-section {
+		display: grid;
+		background-color: $md-amber-200;
+		grid-area: pagination-section;
+		ul {
+			text-align: center;
+			list-style: none;
+			margin-bottom:0px;
+			box-sizing: border-box;
+			padding-left:0px;
+			display: grid;
+			height: 100%;
+			grid-template-areas: "previous pages next";
+		}
+		.previous {
+			grid-area: previous;
+		}
+		#pages {
+			display: flex;
+			grid-area: pages;
+		}
+		.page-number, .page-link{
+			height: 100%;
+			display: block;
+			flex: 1;
+		}
+		.next {
+			grid-area: next;
+		}
+	}
 }
