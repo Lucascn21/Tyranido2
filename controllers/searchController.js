@@ -17,51 +17,53 @@ exports.search = async (req, res, next) => {
 				type: req.body.tipo, //	movie, series, episode, game
 				y: req.body.anio,
 				page: req.body.page,
-				apikey: "40921d99",
+				apikey: process.env.API_KEY ,
 			},
 		})
 		.then(function (response) {
-			//Si recibo respuesta, continuo, sino rechazo la promesa    
-            console.dir("body req")
-            //console.dir(req.body)
-            console.dir("axios response")
-            //console.dir(response)
-            console.dir(response.data.Search)
+			if (!response.data.Error) {
+				req.session.searchResult = response.data.Search;
+				req.session.resultsAmount = response.data.Search.length;
+				req.session.totalResults = response.data.totalResults;
+				req.session.searchResult.forEach((element) => {
+					if (element.Poster == "N/A") element.Poster = "/images/nopicture.png";
+				});
+			} else {
+				req.session.searchResult = [];
+				req.session.resultsAmount = 0;
+			}
 		})
-		.catch(function (error) {
-			if (error.response) {
+		.catch(function (err) {
+			if (err.response) {
 				// The request was made and the server responded with a status code
 				// that falls out of the range of 2xx
-				console.log(`Mensaje de Error Response: ${error.response}`);
-				msjError = error.response;
-			} else if (error.request) {
+				console.log(`Mensaje de Error Response: ${err.response}`);
+			} else if (err.request) {
 				// The request was made but no response was received
 				// `error.request` is an instance of XMLHttpRequest in the browser and an instance of
 				// http.ClientRequest in node.js
-				console.log(`Mensaje de Error Req: ${error.request}`);
-				msjError = error.request;
+				console.log(`Mensaje de Error Req: ${err.request}`);
 			} else {
 				// Something happened in setting up the request that triggered an Error
-				console.log(`Mensaje de Error: ${error.message}`);
-				msjError = error.message;
+				console.log(`Mensaje de Error: ${err.message}`);
 			}
-			req.session.message = `Axios rip`;
-			req.session.alertType = "danger";
-			next(createError(500));
-			//res.render("home", { error: msjError }); //Sin este if, node me da Unhandled promise rejection cuando recibo no recibo data pero si msjerror
+
+			throw new Error(err);
 		})
 		.finally(function () {
-            if(response.data.Search){console.dir('resultados exitosos')}
-			/*
-
-			//Si la data es un array de datos, paso la lista a la vista y la cantidad de resultados (es solo para la alerta que muestra la cantidad de resultados)
-			if (Array.isArray(data)) {
-                console.dir('recibi array')
+			let { searchResult, resultsAmount, totalResults } = req.session;
+			if (resultsAmount) {
+				res.status(302);
+				req.session.message = `${resultsAmount} results out of ${totalResults}`;
+				req.session.alertType = "success";
+				return res.redirect("dashboard");
 			} else {
-                console.dir('recibi una pelicula')
-				res.render("pelicula", { pelicula: 'asd' });
+				res.status(204);
+				req.session.message = "No results";
+				req.session.alertType = "warning";
+				req.session.searchResult = [];
+				return res.redirect("dashboard");
 			}
-*/
 		});
 };
 exports.game = async (req, res, next) => {};
