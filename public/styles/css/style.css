@@ -119,11 +119,15 @@ main {
   #main-dashboard #movies-section {
     display: grid;
     grid-template-columns: repeat(2, minmax(0, 1fr));
-    grid-auto-rows: minmax(0fr, 1fr);
+    grid-auto-rows: minmax(0, 1fr);
     grid-area: movies-section;
     overflow: scroll; }
     #main-dashboard #movies-section .movie-card {
-      background-color: #a1887f; }
+      place-content: flex-end;
+      background-color: #a1887f;
+      margin: 5px; }
+    #main-dashboard #movies-section img {
+      height: 65%; }
   #main-dashboard #lookup-section {
     display: flex;
     background-color: #ffecb3;
