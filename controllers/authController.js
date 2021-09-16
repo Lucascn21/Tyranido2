@@ -57,6 +57,7 @@ exports.login = async (req, res, next) => {
 			req.session.owner = username;
 			req.session.sessID = req.sessionID;
 			req.session.userSessID = user.sessID;
+			req.session.searchResult=[];
 			return res.redirect("/dashboard");
 		} else {
 			res.status(409);
