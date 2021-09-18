@@ -12,10 +12,10 @@ exports.search = async (req, res, next) => {
 				//y:1992 //anio de estreno/release de la serie, pelicula o episodio.
 				//page: 1 //Numero de pagina
 				i: req.body.imdb,
-				t: req.body.titulo,
+				t: req.body.title,
 				s: req.body.searchQuery,
-				type: req.body.tipo, //	movie, series, episode, game
-				y: req.body.anio,
+				type: req.body.type, //	movie, series, episode, game
+				y: req.body.year,
 				page: req.body.page,
 				apikey: process.env.API_KEY ,
 			},
