@@ -1,7 +1,7 @@
 var express = require("express");
 var router = express.Router();
 
-const dashboardController = require("../controllers/dashboardController");
+const lookupController = require("../controllers/lookupController");
 const authController = require("../controllers/authController");
 const landingController = require("../controllers/landingController");
 const loginController = require("../controllers/loginController");
@@ -26,7 +26,7 @@ router.post("/auth/register", authController.register);
 router.post("/auth/login", authController.login);
 router.post("/auth/logout", authController.logout);
 
-router.get("/dashboard", isAuth, dashboardController.index);
+router.get("/lookup", isAuth, lookupController.index);
 
 router.post("/search",  isAuth, searchController.search);
 
