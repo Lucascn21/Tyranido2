@@ -58,7 +58,7 @@ exports.login = async (req, res, next) => {
 			req.session.sessID = req.sessionID;
 			req.session.userSessID = user.sessID;
 			req.session.searchResult=[];
-			return res.redirect("/dashboard");
+			return res.redirect("/lookup");
 		} else {
 			res.status(409);
 			req.session.message = `Login failed - Wrong credentials`;
