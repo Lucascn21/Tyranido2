@@ -1,0 +1,58 @@
+<main id="main-dashboard">
+	<section id="section-lookup">
+		<form action="/search" id="form-search" method="POST">
+			<button type="submit" formmethod="POST" form="form-search" class="btn btn-primary">Search</button>
+			<input type="text" class="form-control" id="inputQuerySearch" name="searchQuery" />
+			<% if (message) { %><span id="dashboard-message" class="alert alert-<%= alertType %> span-Context" role="alert"
+				><%= message %></span
+			>
+			<%} else { %>
+			<span id="dashboard-message" class="alert alert-success span-Context" role="alert"
+				>Look for a movie/game/episode</span
+			>
+			<% } %>
+			<section id="filters">
+				<div class="form-check form-check-inline">
+					<input class="form-check-input" type="radio" name="type" id="inlineRadio1" value="movie" />
+					<label class="form-check-label" for="inlineRadio1">Movie</label>
+				</div>
+				<div class="form-check form-check-inline">
+					<input class="form-check-input" type="radio" name="type" id="inlineRadio2" value="series" />
+					<label class="form-check-label" for="inlineRadio2">Serie</label>
+				</div>
+				<div class="form-check form-check-inline">
+					<input class="form-check-input" type="radio" name="type" id="inlineRadio3" value="game" />
+					<label class="form-check-label" for="inlineRadio3">Game</label>
+				</div>
+			</section>
+		</form>
+	</section>
+	<section id="section-movies">
+		<% if (searchResult!='not found') { %> <% searchResult.forEach(function(result) { %>
+		<article class="movie-card">
+			<img
+				src="<%=
+			result.Poster %>"
+				class="card-img-top"
+				alt="..."
+			/>
+			<div class="card-body">
+				<h5 class="card-title"><%= result.Title %></h5>
+				<p class="card-text"><%= result.Year %></p>
+				<p class="card-text text-uppercase"><%= result.Type %></p>
+				<p class="card-text text-uppercase">
+					<span class="imdbRatingPlugin imdbRatingStyle2" data-user="" data-title="<%= result.imdbID %>" data-style="p2"
+						><a href="https://www.imdb.com/title/<%= result.imdbID %>/?ref_=plg_rt_1"
+							><img
+								class="movie-img"
+								src="https://ia.media-imdb.com/images/G/01/imdb/plugins/rating/images/imdb_38x18.png"
+								alt="<%= result.Title %>"
+							/> </a
+						><span class="rating"><span class="ofTen"></span></span
+					></span>
+				</p>
+			</div>
+		</article>
+		<% }); } %>
+	</section>
+</main>
