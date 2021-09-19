@@ -10,7 +10,6 @@ const session = require("express-session");
 const MongoDBStore = require("connect-mongodb-session")(session);
 const { v4: uuidv4 } = require("uuid");
 
-
 //Routers
 var htmlRouter = require("./routes/index");
 
@@ -55,8 +54,6 @@ app.use(
 		store: store,
 	})
 );
-
-
 
 // Set local context, clear session context -- from Ethan Brown's book, 'Web Development with Node & Express'
 app.use(function (req, res, next) {
