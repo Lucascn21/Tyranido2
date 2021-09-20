@@ -29,7 +29,7 @@
 	</section>
 	<section id="section-movies">
 		<% if (searchResult!='not found') { %> <% searchResult.forEach(function(result) { %>
-		<article class="movie-card">
+		<article onclick="location.href = 'lookup/<%= result.Type %>/<%= result.imdbID %>';" class="movie-card">
 			<img
 				src="<%=
 			result.Poster %>"
