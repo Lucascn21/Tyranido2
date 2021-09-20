@@ -16,7 +16,7 @@ const isNotAuth = (req, res, next) => {
 		res.status(401);
 		req.session.message = "AlreadyLoggedIn";
 		req.session.alertType = "warning";
-		res.redirect("/dashboard");
+		res.redirect("/lookup");
 	} else {
 		next();
 	}

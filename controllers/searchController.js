@@ -1,6 +1,6 @@
 const axios = require("axios");
 
-// POST /search/movie
+// POST /search
 exports.search = async (req, res, next) => {
 	axios
 		.get("https://www.omdbapi.com/", {
@@ -79,4 +79,4 @@ exports.search = async (req, res, next) => {
 			}
 		});
 };
-exports.game = async (req, res, next) => {};
+

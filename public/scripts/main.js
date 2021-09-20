@@ -4,6 +4,8 @@ if (isOpera) {
 	let imgs = Array.from(document.getElementsByClassName("card-img-top"));
 	imgs.forEach((element) => {
 		element.classList.toggle("opera");
+		element.clientHeight=100;
+		console.dir(element)
 	});
 }
 
