@@ -1,0 +1,14 @@
+#main-error {
+	
+}
+
+#section-error {
+    border: 1px solid $md-light-text-secondary;
+	background-color: $md-black;
+    color:$md-amber-50;
+	display: flex;
+	grid-area: section;
+	justify-content: center;
+	align-items: center;
+	flex-flow: column;
+}
