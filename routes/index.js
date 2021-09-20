@@ -31,6 +31,10 @@ router.get("/lookup", isAuth, lookupController.index);
 router.post("/search",  isAuth, searchController.search);
 
 
+router.get("/lookup/movie/:imdbID", isAuth, lookupController.movie);
+router.get("/lookup/game/:imdbID", isAuth, lookupController.game);
+router.get("/lookup/series/:imdbID", isAuth, lookupController.series);
+
 
 
 
