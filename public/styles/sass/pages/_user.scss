@@ -6,10 +6,18 @@
 
 #section-user {
 	height: 50%;
+	margin-bottom:5%;
+	
 	background-color: $md-blue-grey-800;
+	#passwordHelpBlock{
+		padding-top:40px;
+	}
+	label{
+		padding:0;
+	}
 }
 #section-favourites {
-	height: 50%;
+	height: 48%;
 	background-color: $md-blue-grey-800;
 	margin-bottom: 1rem;
 
@@ -22,9 +30,15 @@
 	.carousel {
 		overflow: hidden;
 	}
+
 	.carousel-inner {
 		height: 90%;
-		width: 25%;
+		width: 90%;
+	}
+
+	.carousel-control-prev,
+	.carousel-control-next {
+		background-color: #000;
 	}
 	.item {
 		overflow: hidden;
@@ -47,4 +61,23 @@
 		margin-left: 30px;
 		margin-top: 30px;
 	}
+}
+
+@media only screen and (min-width: 1024px) {
+	.carousel-inner {
+		height: 90% !important;
+		//width: 25% !important;
+	}
+	#section-favourites {
+		//margin-left: 25%;
+		width: 25%;
+	}
+
+	
+#section-user {
+
+	margin-bottom:2%;
+	
+
+}
 }

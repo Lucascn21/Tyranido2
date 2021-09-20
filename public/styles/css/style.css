@@ -219,10 +219,15 @@ main {
 
 #section-user {
   height: 50%;
+  margin-bottom: 5%;
   background-color: #37474f; }
+  #section-user #passwordHelpBlock {
+    padding-top: 40px; }
+  #section-user label {
+    padding: 0; }
 
 #section-favourites {
-  height: 50%;
+  height: 48%;
   background-color: #37474f;
   margin-bottom: 1rem;
   display: flex;
@@ -233,7 +238,10 @@ main {
     overflow: hidden; }
   #section-favourites .carousel-inner {
     height: 90%;
-    width: 25%; }
+    width: 90%; }
+  #section-favourites .carousel-control-prev,
+  #section-favourites .carousel-control-next {
+    background-color: #000; }
   #section-favourites .item {
     overflow: hidden; }
   #section-favourites .carousel-inner img {
@@ -250,10 +258,18 @@ main {
     margin-left: 30px;
     margin-top: 30px; }
 
+@media only screen and (min-width: 1024px) {
+  .carousel-inner {
+    height: 90% !important; }
+  #section-favourites {
+    width: 25%; }
+  #section-user {
+    margin-bottom: 2%; } }
+
 html {
   height: 100%;
   width: 100%; }
 
-@media (min-width: 1024px) and (max-width: 1280px) {
+@media (min-width: 1023px) and (max-width: 1281px) {
   * {
     font-size: xx-large; } }
