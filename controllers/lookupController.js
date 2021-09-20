@@ -20,7 +20,7 @@ const getDataByIdAndType = async (imdbID, type, req, res) => {
 		.get("https://www.omdbapi.com/", {
 			params: {
 				i: imdbID,
-				type: type, 
+				type: type,
 				apikey: process.env.API_KEY,
 			},
 		})
@@ -28,7 +28,6 @@ const getDataByIdAndType = async (imdbID, type, req, res) => {
 			if (!response.data.Error) {
 				req.session.result = response.data;
 				req.session.result.Ratings.forEach((element) => {
-					if (element.Poster == "N/A") element.Poster = "/images/nopicture.png";
 					//Parsing ratings cause i need a value from 0 to 100 for the frontend
 					if (element.Source == "Internet Movie Database") {
 						let res = element.Value.split("/");
@@ -42,8 +41,9 @@ const getDataByIdAndType = async (imdbID, type, req, res) => {
 						console.error("Unhandled rating: " + element.Value);
 					}
 				});
-				//This makes sure EJS doesnt show N/A in the view
+				//This makes sure EJS doesnt show N/A in the view and sets up a img on the view if theres no
 				for (data in req.session.result) {
+					if (data == "Poster" && req.session.result[data] == "N/A") req.session.result[data] = "/images/nopicture.png";
 					if (req.session.result[data] == "N/A") delete req.session.result[data];
 				}
 			} else {
