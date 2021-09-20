@@ -222,17 +222,18 @@ main {
   background-color: #37474f; }
 
 #section-favourites {
-  display: grid;
   height: 50%;
   background-color: #37474f;
-  margin-bottom: 1rem; }
+  margin-bottom: 1rem;
+  display: flex;
+  flex-direction: column; }
   #section-favourites #carouselExampleControls {
     text-align: -webkit-center; }
   #section-favourites .carousel {
     overflow: hidden; }
   #section-favourites .carousel-inner {
-    height: 50%;
-    width: 50%; }
+    height: 90%;
+    width: 25%; }
   #section-favourites .item {
     overflow: hidden; }
   #section-favourites .carousel-inner img {

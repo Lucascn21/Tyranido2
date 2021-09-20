@@ -1,7 +1,7 @@
 #main-user {
-	padding:1rem;
+	padding: 1rem;
 	display: block;
-	text-align:center;
+	text-align: center;
 }
 
 #section-user {
@@ -9,39 +9,42 @@
 	background-color: $md-blue-grey-800;
 }
 #section-favourites {
-	display: grid;
 	height: 50%;
 	background-color: $md-blue-grey-800;
-	margin-bottom:1rem;
+	margin-bottom: 1rem;
 
-	#carouselExampleControls{
-		text-align:-webkit-center;
+	display: flex;
+	flex-direction: column;
+
+	#carouselExampleControls {
+		text-align: -webkit-center;
 	}
-	.carousel { overflow: hidden; }
-	.carousel-inner { 
-		height:50%;
-		width:50%;
-	
+	.carousel {
+		overflow: hidden;
 	}
-	.item { overflow: hidden;}
+	.carousel-inner {
+		height: 90%;
+		width: 25%;
+	}
+	.item {
+		overflow: hidden;
+	}
 	.carousel-inner img {
 		width: 100%;
 		height: 100%;
-	
 	}
-  
+
 	.carousel-item {
 		width: 100%;
 		height: 100%;
-	
 	}
-  
+
 	.carousel-caption {
-	  color: #000;
-	  position: relative;
-	  float: left;
-	  left: 0;
-	  margin-left: 30px;
-	  margin-top: 30px;
+		color: #000;
+		position: relative;
+		float: left;
+		left: 0;
+		margin-left: 30px;
+		margin-top: 30px;
 	}
 }
