@@ -15,12 +15,10 @@ exports.register = async (req, res, next) => {
 		return res.redirect("/register");
 	}
 
-	//build our model from the body
 	user = new userModel({
 		username,
 		email,
 		password: await encrypt(password, parseInt(process.env.HASH_SALT)),
-		sessID: req.sessionID,
 	});
 
 	try {
@@ -55,8 +53,6 @@ exports.login = async (req, res, next) => {
 			req.session.alertType = "success";
 			req.session.isAuth = true;
 			req.session.owner = username;
-			req.session.sessID = req.sessionID;
-			req.session.userSessID = user.sessID;
 			req.session.searchResult=[];
 			return res.redirect("/lookup");
 		} else {

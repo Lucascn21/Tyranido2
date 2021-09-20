@@ -14,8 +14,6 @@ const isAuth = async (req, res, next) => {
 const isNotAuth = (req, res, next) => {
 	if (req.session.isAuth) {
 		res.status(401);
-		req.session.message = "AlreadyLoggedIn";
-		req.session.alertType = "warning";
 		res.redirect("/lookup");
 	} else {
 		next();

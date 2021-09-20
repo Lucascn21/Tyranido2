@@ -2,17 +2,12 @@ const axios = require("axios");
 
 // POST /search
 exports.search = async (req, res, next) => {
+	//This code is repeated in other controllers, for the sake of time i will leave the refactoring for my next remaster/remake of this project
 	axios
 		.get("https://www.omdbapi.com/", {
 			params: {
-				// i: 'tt3896198', //ID IMDb (REQUERIDO ESTE O t PARA BUSQUEDAS ESPECIFICAS)
-				//t: 'of', //retorna el primer titulo que contiene esta string (REQUERIDO ESTE O i PARA BUSQUEDAS ESPECIFICAS)
-				//s: 'of the', //devuelve array de objetos, tambien una propiedad llamada totalResults. Con 'of' devolvia un error: demasiados resultados. (BUSQUEDAS GENERALES)
-				//type:'movie' // movie, series, episode ESPECIFICA SI BUSCAMOS UNA SERIE, PELI O EPISODIO ESPECIFICO
-				//y:1992 //anio de estreno/release de la serie, pelicula o episodio.
-				//page: 1 //Numero de pagina
-				i: req.body.imdb,
-				t: req.body.title,
+				i: req.body.imdb, // i: 'tt3896198' ID IMDb
+				t: req.body.title, //retorna el primer titulo que contiene esta string
 				s: req.body.searchQuery,
 				type: req.body.type, //	movie, series, episode, game
 				y: req.body.year,
@@ -48,23 +43,17 @@ exports.search = async (req, res, next) => {
 		})
 		.catch(function (err) {
 			if (err.response) {
-				// The request was made and the server responded with a status code
-				// that falls out of the range of 2xx
-				console.log(`Mensaje de Error Response: ${err.response}`);
+				console.error(`Error Response: ${err.response}`);
 			} else if (err.request) {
-				// The request was made but no response was received
-				// `error.request` is an instance of XMLHttpRequest in the browser and an instance of
-				// http.ClientRequest in node.js
-				console.log(`Mensaje de Error Req: ${err.request}`);
+				console.error(`Error Req: ${err.request}`);
 			} else {
-				// Something happened in setting up the request that triggered an Error
-				console.log(`Mensaje de Error: ${err.message}`);
+				console.error(`Error: ${err.message}`);
 			}
 
 			throw new Error(err);
 		})
 		.finally(function () {
-			let { searchResult, resultsAmount, totalResults } = req.session;
+			let { resultsAmount, totalResults } = req.session;
 			if (resultsAmount) {
 				res.status(302);
 				req.session.message = `${resultsAmount} results out of ${totalResults}`;
@@ -79,4 +68,3 @@ exports.search = async (req, res, next) => {
 			}
 		});
 };
-
