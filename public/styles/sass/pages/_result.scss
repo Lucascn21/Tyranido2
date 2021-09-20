@@ -1,5 +1,12 @@
 #main-result {
-	display: block;
+	display: grid;
+
+	grid-area: main;
+	grid-template-areas:
+		". . ."
+		". section ."
+		". . .";
+	background-color: #1b1824;
 }
 
 #section-result {
@@ -10,4 +17,6 @@
 	border-color: rgb(50, 17, 82);
 	text-shadow: 2px 2px rgb(61, 4, 61);
 	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+
+	word-break: break-word;
 }
