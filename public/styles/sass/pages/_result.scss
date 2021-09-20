@@ -1,0 +1,13 @@
+#main-result {
+	display: block;
+}
+
+#section-result {
+	margin: 1rem 10% 1rem;
+	grid-area: section;
+	background-color: black !important;
+	color: orange;
+	border-color: rgb(50, 17, 82);
+	text-shadow: 2px 2px rgb(61, 4, 61);
+	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}

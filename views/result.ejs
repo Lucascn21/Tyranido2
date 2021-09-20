@@ -1,37 +1,37 @@
 <main id="main-result">
 	<section id="section-result">
-		<div class="container carta movie">
-			<h1 class="my-4">
-				<%=movie.Title %>
-				<small class="font-italic text-muted lead"><%=movie.Year %></small>
+		<div class="container carta result">
+			<h1 class="mb-4">
+				<%=result.Title %>
+				<small class="font-italic text-muted lead"><%=result.Year %></small>
 			</h1>
 
 			<div class="row">
 				<div class="col-md-3">
-					<img class="img-fluid border border-dark" src="<%=movie.Poster %>" alt="" />
+					<img class="img-fluid border border-dark" src="<%=result.Poster %>" alt="" />
 				</div>
 
 				<div class="col-md-9">
 					<h3 class="my-3">Plot</h3>
-					<p class="ml-4">"<%=movie.Plot %>"</p>
+					<p class="ml-4">"<%=result.Plot %>"</p>
 					<hr />
-					<h3 class="my-3 text-capitalize"><%=movie.Type %> Details</h3>
+					<h3 class="my-3 text-capitalize"><%=result.Type %> Details</h3>
 					<ul class="fa-ul">
 						<% for(var i=0; i < 11 ; i++) {%>
 						<li>
-							<i class="fa-li fas fa-angle-right"></i><%= Object.keys(movie)[i] %> : <%= Object.values(movie)[i] %> .
+							<i class="fa-li fas fa-angle-right"></i><%= Object.keys(result)[i] %> : <%= Object.values(result)[i] %>
 						</li>
 
-						<% } %> <% if(movie.Production) {%> <%= movie.Production%>
-						<li><i class="fa-li fas fa-angle-right"></i>Production: <%=movie.Production %>.</li>
-						<%}%> <% if(movie.totalSeasons) {%> <%= movie.totalSeasons%>
-						<li><i class="fa-li fas fa-angle-right"></i>Seasons: <%=movie.totalSeasons %>.</li>
-						<%}%> <% if(movie.BoxOffice) {%> <%= movie.BoxOffice%>
-						<li><i class="fa-li fas fa-dollar-sign text-capitalize"></i>Box Office: <%=movie.BoxOffice %></li>
-						<%}%> <% if(movie.Website) {%>
+						<% } %> <% if(result.Production) {%>
+						<li><i class="fa-li fas fa-angle-right"></i>Production: <%=result.Production %>.</li>
+						<%}%> <% if(result.totalSeasons) {%>
+						<li><i class="fa-li fas fa-angle-right"></i>Seasons: <%=result.totalSeasons %>.</li>
+						<%}%> <% if(result.BoxOffice) {%>
+						<li><i class="fa-li fas fa-dollar-sign text-capitalize"></i>Box Office: <%=result.BoxOffice %></li>
+						<%}%> <% if(result.Website) {%>
 						<li>
 							<i class="fa-li fas fa-at"></i>Website:
-							<a href="<%=movie.Website %>" class="font-weight-bold"><%=movie.Title %></a>
+							<a href="<%=result.Website %>" class="font-weight-bold"><%=result.Title %></a>
 						</li>
 						<%}%>
 					</ul>
@@ -40,7 +40,7 @@
 					<h3 class="my-3">Ratings & Awards</h3>
 
 					<ul class="fa-ul">
-						<% movie.Ratings.forEach(function(rating) { %>
+						<% result.Ratings.forEach(function(rating) { %>
 						<li><i class="fa-li far fa-star"></i><%=rating.Source %></li>
 						<div class="progress w-50 border border-warning bg-danger">
 							<div
@@ -59,10 +59,9 @@
 					<div class="row">
 						<div class="col">
 							<ul class="fa-ul">
-								<%= movie.Awards%>
 								<li>
 									<i class="fa-li fas fa-award"></i>
-									<p class="text-capitalize">Awards: <%=movie.Awards %></p>
+									<p class="text-capitalize">Awards: <%=result.Awards %></p>
 								</li>
 							</ul>
 						</div>
