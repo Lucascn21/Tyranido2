@@ -213,44 +213,96 @@ main {
   word-break: break-word; }
 
 #main-user {
-  padding: 1rem;
-  display: block;
-  text-align: center; }
+  grid-template-areas: "section-user" "section-liked-movies " "section-liked-series " "section-liked-games";
+  grid-template-rows: 0.8fr 1fr 1fr 1fr;
+  grid-template-columns: 1fr;
+  row-gap: 1em; }
 
 #section-user {
-  height: 50%;
-  margin-bottom: 5%;
-  background-color: #37474f; }
-  #section-user #passwordHelpBlock {
-    padding-top: 40px; }
-  #section-user label {
-    padding: 0; }
+  grid-area: section-user;
+  background-color: #b0bec5;
+  text-align: center; }
 
-#section-favourites {
-  height: 48%;
-  background-color: #37474f;
-  margin-bottom: 1rem;
-  display: flex;
-  flex-direction: column; }
-  #section-favourites #carouselExampleControls {
-    text-align: -webkit-center; }
-  #section-favourites .carousel {
+#section-liked-movies {
+  grid-area: section-liked-movies;
+  background-color: #455a64;
+  text-align: -webkit-center;
+  padding-bottom: 5%; }
+  #section-liked-movies .carousel {
     overflow: hidden; }
-  #section-favourites .carousel-inner {
+  #section-liked-movies .carousel-inner {
     height: 90%;
     width: 90%; }
-  #section-favourites .carousel-control-prev,
-  #section-favourites .carousel-control-next {
+  #section-liked-movies .carousel-control-prev,
+  #section-liked-movies .carousel-control-next {
     background-color: #000; }
-  #section-favourites .item {
+  #section-liked-movies .item {
     overflow: hidden; }
-  #section-favourites .carousel-inner img {
+  #section-liked-movies .carousel-inner img {
     width: 100%;
     height: 100%; }
-  #section-favourites .carousel-item {
+  #section-liked-movies .carousel-item {
     width: 100%;
     height: 100%; }
-  #section-favourites .carousel-caption {
+  #section-liked-movies .carousel-caption {
+    color: #000;
+    position: relative;
+    float: left;
+    left: 0;
+    margin-left: 30px;
+    margin-top: 30px; }
+
+#section-liked-series {
+  grid-area: section-liked-series;
+  background-color: #455a64;
+  text-align: -webkit-center;
+  padding-bottom: 5%; }
+  #section-liked-series .carousel {
+    overflow: hidden; }
+  #section-liked-series .carousel-inner {
+    height: 90%;
+    width: 90%; }
+  #section-liked-series .carousel-control-prev,
+  #section-liked-series .carousel-control-next {
+    background-color: #000; }
+  #section-liked-series .item {
+    overflow: hidden; }
+  #section-liked-series .carousel-inner img {
+    width: 100%;
+    height: 100%; }
+  #section-liked-series .carousel-item {
+    width: 100%;
+    height: 100%; }
+  #section-liked-series .carousel-caption {
+    color: #000;
+    position: relative;
+    float: left;
+    left: 0;
+    margin-left: 30px;
+    margin-top: 30px; }
+
+#section-liked-games {
+  grid-area: section-liked-games;
+  background-color: #455a64;
+  text-align: -webkit-center;
+  padding-bottom: 5%; }
+  #section-liked-games .carousel {
+    overflow: hidden; }
+  #section-liked-games .carousel-inner {
+    height: 90%;
+    width: 90%; }
+  #section-liked-games .carousel-control-prev,
+  #section-liked-games .carousel-control-next {
+    background-color: #000; }
+  #section-liked-games .item {
+    overflow: hidden; }
+  #section-liked-games .carousel-inner img {
+    width: 100%;
+    height: 100%; }
+  #section-liked-games .carousel-item {
+    width: 100%;
+    height: 100%; }
+  #section-liked-games .carousel-caption {
     color: #000;
     position: relative;
     float: left;
@@ -261,10 +313,11 @@ main {
 @media only screen and (min-width: 1024px) {
   .carousel-inner {
     height: 90% !important; }
-  #section-favourites {
-    width: 25%; }
-  #section-user {
-    margin-bottom: 2%; } }
+  #main-user {
+    grid-template-areas: "section-user section-user section-user" "section-liked-movies section-liked-series section-liked-games";
+    grid-template-rows: 0.35fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr;
+    row-gap: 1%; } }
 
 html {
   height: 100%;

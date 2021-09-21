@@ -1,83 +1,57 @@
+
 #main-user {
-	padding: 1rem;
-	display: block;
-	text-align: center;
+	grid-template-areas:
+		"section-user"
+		"section-liked-movies "
+		"section-liked-series "
+		"section-liked-games";
+	grid-template-rows: 0.8fr 1fr 1fr 1fr;
+	grid-template-columns: 1fr;
+	row-gap: 1em;
 }
-
 #section-user {
-	height: 50%;
-	margin-bottom:5%;
-	
-	background-color: $md-blue-grey-800;
-	#passwordHelpBlock{
-		padding-top:40px;
-	}
-	label{
-		padding:0;
-	}
+	grid-area: section-user;
+	background-color: $md-blue-grey-200;
+		text-align: center;
 }
-#section-favourites {
-	height: 48%;
-	background-color: $md-blue-grey-800;
-	margin-bottom: 1rem;
+#section-liked-movies {
+	grid-area: section-liked-movies;
+	background-color: $md-blue-grey-700;
+	text-align: -webkit-center;
+	padding-bottom: 5%;
+	@import "../components/carousel";
+}
 
-	display: flex;
-	flex-direction: column;
 
-	#carouselExampleControls {
-		text-align: -webkit-center;
-	}
-	.carousel {
-		overflow: hidden;
-	}
+#section-liked-series {
+	grid-area: section-liked-series;
+	background-color: $md-blue-grey-700;
+	text-align: -webkit-center;
+	padding-bottom: 5%;
+	@import "../components/carousel";
+}
 
-	.carousel-inner {
-		height: 90%;
-		width: 90%;
-	}
-
-	.carousel-control-prev,
-	.carousel-control-next {
-		background-color: #000;
-	}
-	.item {
-		overflow: hidden;
-	}
-	.carousel-inner img {
-		width: 100%;
-		height: 100%;
-	}
-
-	.carousel-item {
-		width: 100%;
-		height: 100%;
-	}
-
-	.carousel-caption {
-		color: #000;
-		position: relative;
-		float: left;
-		left: 0;
-		margin-left: 30px;
-		margin-top: 30px;
-	}
+#section-liked-games {
+	grid-area: section-liked-games;
+	background-color: $md-blue-grey-700;
+	text-align: -webkit-center;
+	padding-bottom: 5%;
+	@import "../components/carousel";
 }
 
 @media only screen and (min-width: 1024px) {
 	.carousel-inner {
 		height: 90% !important;
-		//width: 25% !important;
-	}
-	#section-favourites {
-		//margin-left: 25%;
-		width: 25%;
-	}
-
 	
-#section-user {
+	}
+	#main-user {
+		grid-template-areas:
+			"section-user section-user section-user"
+			"section-liked-movies section-liked-series section-liked-games";
+		grid-template-rows: 0.35fr 1fr;
+		grid-template-columns: 1fr 1fr 1fr;
+		row-gap: 1%;
+		
+	}
 
-	margin-bottom:2%;
-	
-
-}
 }
