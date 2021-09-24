@@ -1,6 +1,15 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
+const likeSubschema = new Schema({
+	imdbId: {
+		type: String,
+	},
+	resultType: {
+		type: String,
+	},
+});
+
 const userSchema = new Schema({
 	email: {
 		type: String,
@@ -16,10 +25,7 @@ const userSchema = new Schema({
 		type: String,
 		required: true,
 	},
-	sessID: {
-		type: String,
-		required: true,
-	},
+	liked: [likeSubschema],
 });
 
 module.exports = mongoose.model("User", userSchema);

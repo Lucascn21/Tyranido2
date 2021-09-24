@@ -1,4 +1,5 @@
 const axios = require("axios");
+
 // GET lookup
 exports.index = async (req, res, next) => {
 	return res.render("lookup", { context: res.locals.context, searchResult: req.session.searchResult });
@@ -38,7 +39,7 @@ const getDataByIdAndType = async (imdbID, type, req, res) => {
 					} else if (element.Source == "Metacritic") {
 						element.Value = parseInt(element.Value);
 					} else {
-						console.error("Unhandled rating: " + element.Value);
+						console.error("Unhandled rating: " + element.Value );
 					}
 				});
 				//This makes sure EJS doesnt show N/A in the view and sets up a img on the view if theres no

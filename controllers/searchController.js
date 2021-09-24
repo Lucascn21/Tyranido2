@@ -1,4 +1,5 @@
 const axios = require("axios");
+const { getLikedByUser } = require("../helpers/database");
 
 // POST /search
 exports.search = async (req, res, next) => {
@@ -15,25 +16,24 @@ exports.search = async (req, res, next) => {
 				apikey: process.env.API_KEY,
 			},
 		})
-		.then(function (response) {
+		.then(async function (response) {
 			if (!response.data.Error) {
 				req.session.searchResult = response.data.Search;
 				req.session.resultsAmount = response.data.Search.length;
 				req.session.totalResults = response.data.totalResults;
+				req.session.likedContent = await getLikedByUser(req.session.owner);
+				TODO:this
+				console.dir("req.session.likedContent");
+				console.dir(req.session.likedContent);
+
 				req.session.searchResult.forEach((element) => {
 					if (element.Poster == "N/A") element.Poster = "/images/nopicture.png";
-					//Parsing ratings
-					if (element.Source == "Internet Movie Database") {
-						//Divido el string, en res[0] tengo el score actual, en res[1] tengo el valor total sobre el cual se divide
-						let res = element.Value.split("/");
-						element.Value = Math.round((res[0] / res[1]) * 100);
-					} else if (element.Source == "Rotten Tomatoes") {
-						let res = element.Value.split("%");
-						element.Value = parseInt(res[0]);
-					} else if (element.Source == "Metacritic") {
-						element.Value = parseInt(element.Value);
+					if (req.session.likedContent.includes(element.imdbID)) {
+						element.liked = true;
+						console.dir('like')
 					} else {
-						console.error("Unhandled rating: " + element.Value);
+						console.dir('no like')
+						element.liked = false;
 					}
 				});
 			} else {

@@ -1,4 +1,3 @@
-
 <main id="main-dashboard">
 	<section id="section-lookup">
 		<form action="/search" id="form-search" method="POST">
@@ -14,7 +13,7 @@
 			<% } %>
 			<section id="filters">
 				<div class="form-check form-check-inline">
-					<input class="form-check-input" type="radio" name="type" id="inlineRadio1" value="" checked/>
+					<input class="form-check-input" type="radio" name="type" id="inlineRadio1" value="" checked />
 					<label class="form-check-label" for="inlineRadio1">Any</label>
 				</div>
 				<div class="form-check form-check-inline">
@@ -32,9 +31,12 @@
 			</section>
 		</form>
 	</section>
+
 	<section id="section-movies">
 		<% if (searchResult!='not found') { %> <% searchResult.forEach(function(result) { %>
-		<article onclick="location.href = 'lookup/<%= result.Type %>/<%= result.imdbID %>';" class="movie-card">
+
+		<article onclick="location.href = '/lookup/<%= result.Type %>/<%= result.imdbID %>';" class="movie-card">
+			<form id="form-like-<%= result.imdbID %>" action="/user/like" method="post"></form>
 			<img
 				src="<%=
 			result.Poster %>"
@@ -45,7 +47,7 @@
 				<h5 class="card-title"><%= result.Title %></h5>
 				<p class="card-text"><%= result.Year %></p>
 				<p class="card-text text-uppercase"><%= result.Type %></p>
-				<p class="card-text text-uppercase">
+				<p class="card-text text-uppercase rating-and-like">
 					<span class="imdbRatingPlugin imdbRatingStyle2" data-user="" data-title="<%= result.imdbID %>" data-style="p2"
 						><a href="https://www.imdb.com/title/<%= result.imdbID %>/?ref_=plg_rt_1"
 							><img
@@ -53,8 +55,16 @@
 								src="https://ia.media-imdb.com/images/G/01/imdb/plugins/rating/images/imdb_38x18.png"
 								alt="<%= result.Title %>"
 							/> </a
-						><span class="rating"><span class="ofTen"></span></span
-					></span>
+						><span class="rating"><span class="ofTen"></span></span>
+					</span>
+
+					<input type="hidden" form="form-like-<%= result.imdbID %>" name="imdbID" value="<%= result.imdbID %>" />
+					<input type="hidden" form="form-like-<%= result.imdbID %>" name="Type" value="<%= result.Type %>" />
+					<a>
+						<button type="submit" form="form-like-<%= result.imdbID %>" class="btn btn-sm btn-info">
+							<i class="fa fa-check"></i>Like
+						</button></a
+					>
 				</p>
 			</div>
 		</article>

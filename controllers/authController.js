@@ -19,6 +19,7 @@ exports.register = async (req, res, next) => {
 		username,
 		email,
 		password: await encrypt(password, parseInt(process.env.HASH_SALT)),
+		liked:[]
 	});
 
 	try {
@@ -64,7 +65,7 @@ exports.login = async (req, res, next) => {
 	} catch (error) {
 		req.session.message = `Forbidden 401`;
 		req.session.alertType = "danger";
-		next(createError(401));
+		return next(createError(401));
 	}
 };
 
@@ -77,6 +78,6 @@ exports.logout = async (req, res, next) => {
 	} else {
 		req.session.message = `Couldnt logout 500`;
 		req.session.alertType = "danger";
-		next(createError(500));
+		return next(createError(500));
 	}
 };

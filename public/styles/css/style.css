@@ -154,6 +154,11 @@ main {
       display: grid;
       grid-template-rows: 1fr 1fr 1fr 1fr;
       grid-template-columns: auto; }
+    #main-dashboard #section-movies .rating-and-like {
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      place-items: center; }
   #main-dashboard #section-lookup {
     background-color: #263238;
     color: white;

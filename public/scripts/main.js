@@ -4,8 +4,7 @@ if (isOpera) {
 	let imgs = Array.from(document.getElementsByClassName("card-img-top"));
 	imgs.forEach((element) => {
 		element.classList.toggle("opera");
-		element.clientHeight=100;
-		console.dir(element)
+		element.clientHeight = 100;
 	});
 }
 
@@ -21,3 +20,4 @@ if (isOpera) {
 	js.src = "https://ia.media-imdb.com/images/G/01/imdb/plugins/rating/js/rating.js";
 	stags.parentNode.insertBefore(js, stags);
 })(document, "script", "imdb-rating-api");
+
