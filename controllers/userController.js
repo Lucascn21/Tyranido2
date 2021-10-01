@@ -19,8 +19,7 @@ exports.like = async (req, res, next) => {
 	try {
 		let likedContent = await getLikedByUser(username);
 		if (likedContent.includes(req.body[`imdbID`])) {
-			//req.body[`imdbID`]
-			//req.session.owner
+
 			console.dir(user.liked)
 			user.liked.pull({	
 				_id: req.body[`imdbID`]
