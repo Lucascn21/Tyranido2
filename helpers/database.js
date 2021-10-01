@@ -12,7 +12,7 @@ const connectDB = async () => {
 		const query = { username: "test1234" };
 		userModel.findOneAndUpdate(
 			query,
-			{ username: "test1234", password: await encrypt("test1234", parseInt(process.env.HASH_SALT)), sessID: "0" },
+			{ username: "test1234", password: await encrypt("test1234", parseInt(process.env.HASH_SALT))},
 			{ upsert: true, new: true, runValidators: true },
 			function (err, doc) {
 				if (err) console.dir(`error creando cuenta de prueba ${err}`);
@@ -31,6 +31,8 @@ const getLikedByUser = async (username) => {
 	try {
 		const user = await userModel.findOne({ username }, "liked").lean();
 		let result = Array.from(user.liked).map((likedElement) => likedElement.imdbId);
+		console.dir('result')
+		console.dir(result)
 		return (result = result.filter((e) => e));
 	} catch (err) {
 		console.log(`Error getting ${username}'s liked content - ${err}`);

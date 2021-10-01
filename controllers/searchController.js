@@ -22,7 +22,6 @@ exports.search = async (req, res, next) => {
 				req.session.resultsAmount = response.data.Search.length;
 				req.session.totalResults = response.data.totalResults;
 				req.session.likedContent = await getLikedByUser(req.session.owner);
-				TODO:this
 				console.dir("req.session.likedContent");
 				console.dir(req.session.likedContent);
 
