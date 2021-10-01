@@ -13,8 +13,7 @@ exports.like = async (req, res, next) => {
 	console.dir(req.session.owner);
 	let username = req.session.owner;
 	let user = await userModel.findOne({ username });
-	//const user2 = await userModel.findOne({ username }, { "liked.imdbId": "tt0940530" });
-	//const user3 = await userModel.findOne({ "liked.userId": "tt0940530", username });
+
 
 	try {
 		let likedContent = await getLikedByUser(username);
