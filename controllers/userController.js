@@ -7,33 +7,20 @@ exports.index = async (req, res, next) => {
 };
 
 exports.like = async (req, res, next) => {
-	console.dir("req");
-	console.dir(req.body);
-	console.dir(req.session.owner);
 	let username = req.session.owner;
 	let user = await userModel.findOne({ username });
-
-
 	try {
 		let likedContent = await getLikedByUser(username);
 		if (likedContent.includes(req.body[`imdbID`])) {
-
-			console.dir(user.liked)
-			user.liked.pull({	
-				_id: req.body[`imdbID`]
+			user.liked.pull({
+				_id: req.body[`imdbID`],
 			});
-
-	
-		
-			
 		} else {
-			console.dir("like");
-			user.liked.push({	
+			user.liked.push({
 				_id: req.body[`imdbID`],
 				resultType: req.body[`Type`],
 			});
 		}
-
 		await user.save();
 	} catch (error) {
 		console.error(error);
@@ -41,5 +28,14 @@ exports.like = async (req, res, next) => {
 		req.session.alertType = "danger";
 		return next(createError(401));
 	}
+	req.session.likedContent = await getLikedByUser(req.session.owner);
+	req.session.searchResult.forEach((element) => {
+		if (element.Poster == "N/A") element.Poster = "/images/nopicture.png";
+		if (req.session.likedContent.includes(element.imdbID)) {
+			element.liked = true;
+		} else {
+			element.liked = false;
+		}
+	});
 	return res.redirect("/lookup");
 };

@@ -9,15 +9,6 @@ const searchController= require('../controllers/searchController')
 const userController= require('../controllers/userController')
 const { isNotAuth, isAuth } = require("../middlewares/session");
 
-
-//-----------------------------------------------------------
-
-// Routes for the resource /login
-
-// autologout
-//router.all('*',sessionController.checkLoginExpires);
-
-
 router.get("/", isNotAuth, landingController.index);
 
 router.get("/register", isNotAuth, landingController.index);

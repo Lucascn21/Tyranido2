@@ -12,7 +12,7 @@ const connectDB = async () => {
 		const query = { username: "test1234" };
 		userModel.findOneAndUpdate(
 			query,
-			{ username: "test1234", password: await encrypt("test1234", parseInt(process.env.HASH_SALT))},
+			{ username: "test1234", password: await encrypt("test1234", parseInt(process.env.HASH_SALT)) },
 			{ upsert: true, new: true, runValidators: true },
 			function (err, doc) {
 				if (err) console.dir(`error creando cuenta de prueba ${err}`);
@@ -30,9 +30,7 @@ const getLikedByUser = async (username) => {
 	console.dir(`Getting ${username}'s liked content`);
 	try {
 		const user = await userModel.findOne({ username }, "liked").lean();
-		let result = Array.from(user.liked).map((likedElement) => likedElement.imdbId);
-		console.dir('result')
-		console.dir(result)
+		let result = Array.from(user.liked).map((likedElement) => likedElement._id);
 		return (result = result.filter((e) => e));
 	} catch (err) {
 		console.log(`Error getting ${username}'s liked content - ${err}`);
@@ -40,24 +38,4 @@ const getLikedByUser = async (username) => {
 	}
 };
 
-TODO:this
-const getMongoID = async (imdbID, username) => {
-	try {/*
-		const user = await userModel.findOne({ 'username':username }).lean();
-		
-		console.dir("user");
-		console.dir(user._id);
-		console.dir("user.liked");
-		console.dir(user.liked);
-		const user2 = await userModel.findOne({ '_id':user._id }).lean();
-		user2.liked;
-		console.dir("user2.liked");
-		console.dir(user2.liked);*/
-		return "todo";
-	} catch (err) {
-		console.log(`Error deleting ${username}'s disliked content - ${err}`);
-		console.error(err);
-	}
-};
-
-module.exports = { connectDB, getLikedByUser, getMongoID };
+module.exports = { connectDB, getLikedByUser };

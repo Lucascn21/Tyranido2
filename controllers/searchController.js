@@ -22,16 +22,11 @@ exports.search = async (req, res, next) => {
 				req.session.resultsAmount = response.data.Search.length;
 				req.session.totalResults = response.data.totalResults;
 				req.session.likedContent = await getLikedByUser(req.session.owner);
-				console.dir("req.session.likedContent");
-				console.dir(req.session.likedContent);
-
 				req.session.searchResult.forEach((element) => {
 					if (element.Poster == "N/A") element.Poster = "/images/nopicture.png";
 					if (req.session.likedContent.includes(element.imdbID)) {
 						element.liked = true;
-						console.dir('like')
 					} else {
-						console.dir('no like')
 						element.liked = false;
 					}
 				});

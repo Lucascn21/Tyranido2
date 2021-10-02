@@ -17,6 +17,7 @@ exports.series = async (req, res, next) => {
 };
 //type: game, series, movie
 const getDataByIdAndType = async (imdbID, type, req, res) => {
+	console.dir(req.session);
 	axios
 		.get("https://www.omdbapi.com/", {
 			params: {
@@ -39,7 +40,7 @@ const getDataByIdAndType = async (imdbID, type, req, res) => {
 					} else if (element.Source == "Metacritic") {
 						element.Value = parseInt(element.Value);
 					} else {
-						console.error("Unhandled rating: " + element.Value );
+						console.error("Unhandled rating: " + element.Value);
 					}
 				});
 				//This makes sure EJS doesnt show N/A in the view and sets up a img on the view if theres no

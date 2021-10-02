@@ -3,13 +3,14 @@
 		<form action="/search" id="form-search" method="POST">
 			<button type="submit" formmethod="POST" form="form-search" class="btn btn-primary">Search</button>
 			<input type="text" class="form-control" id="inputQuerySearch" name="searchQuery" />
-			<% if (message) { %><span id="dashboard-message" class="alert alert-<%= alertType %> span-Context" role="alert"
-				><%= message %></span
-			>
+			<% if (message) { %>
+				<span id="dashboard-message" class="alert alert-<%= alertType %> span-Context" role="alert">
+					<%= message %>
+				</span>
 			<%} else { %>
-			<span id="dashboard-message" class="alert alert-success span-Context" role="alert"
-				>Look for a movie/game/episode</span
-			>
+			<span id="dashboard-message" class="alert alert-success span-Context" role="alert">
+				Look for a movie/game/episode
+			</span>
 			<% } %>
 			<section id="filters">
 				<div class="form-check form-check-inline">
@@ -34,15 +35,9 @@
 
 	<section id="section-movies">
 		<% if (searchResult!='not found') { %> <% searchResult.forEach(function(result) { %>
-
 		<article onclick="location.href = '/lookup/<%= result.Type %>/<%= result.imdbID %>';" class="movie-card">
 			<form id="form-like-<%= result.imdbID %>" action="/user/like" method="post"></form>
-			<img
-				src="<%=
-			result.Poster %>"
-				class="card-img-top"
-				alt="..."
-			/>
+			<img src="<%=result.Poster %>" class="card-img-top" alt="..."/>
 			<div class="card-body">
 				<h5 class="card-title"><%= result.Title %></h5>
 				<p class="card-text"><%= result.Year %></p>
@@ -57,14 +52,18 @@
 							/> </a
 						><span class="rating"><span class="ofTen"></span></span>
 					</span>
-
 					<input type="hidden" form="form-like-<%= result.imdbID %>" name="imdbID" value="<%= result.imdbID %>" />
 					<input type="hidden" form="form-like-<%= result.imdbID %>" name="Type" value="<%= result.Type %>" />
 					<a>
-						<button type="submit" form="form-like-<%= result.imdbID %>" class="btn btn-sm btn-info">
-							<i class="fa fa-check"></i>Like
-						</button></a
-					>
+						<% if (result.liked) { %>
+						<button type="submit" form="form-like-<%= result.imdbID %>" class="btn btn-sm btn-danger">
+							<i class="fas fa-thumbs-up fa-flip-vertical"></i> Dislike 
+							<%} else { %>
+							<button type="submit" form="form-like-<%= result.imdbID %>" class="btn btn-sm btn-success">
+							<i class="fas fa-thumbs-up"></i> Like 
+							<% ; } %>
+						</button>
+					</a>
 				</p>
 			</div>
 		</article>
