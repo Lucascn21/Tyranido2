@@ -73,7 +73,7 @@ exports.login = async (req, res, next) => {
 exports.logout = async (req, res, next) => {
 	if (req.session.isAuth) {
 		req.session.destroy();
-		res.clearCookie("connect.sid"); // clean up!
+		res.clearCookie("connect.sid");
 		return res.redirect("/");
 	} else {
 		req.session.message = `Couldnt logout 500`;

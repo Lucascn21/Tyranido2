@@ -53,6 +53,7 @@
 						><span class="rating"><span class="ofTen"></span></span>
 					</span>
 					<input type="hidden" form="form-like-<%= result.imdbID %>" name="imdbID" value="<%= result.imdbID %>" />
+					<input type="hidden" form="form-like-<%= result.imdbID %>" name="Poster" value="<%=result.Poster %>" />
 					<input type="hidden" form="form-like-<%= result.imdbID %>" name="Type" value="<%= result.Type %>" />
 					<a>
 						<% if (result.liked) { %>

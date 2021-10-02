@@ -15,8 +15,8 @@ const connectDB = async () => {
 			{ username: "test1234", password: await encrypt("test1234", parseInt(process.env.HASH_SALT)) },
 			{ upsert: true, new: true, runValidators: true },
 			function (err, doc) {
-				if (err) console.dir(`error creando cuenta de prueba ${err}`);
-				if (doc) console.dir("datos de cuenta de prueba creados/actualizados con exito test1234:test1234");
+				if (err) console.dir(`error creating test account${err}`);
+				if (doc) console.dir("test account created/updated successfully test1234:test1234");
 			}
 		);
 	} catch (err) {
@@ -26,8 +26,7 @@ const connectDB = async () => {
 	}
 };
 
-const getLikedByUser = async (username) => {
-	console.dir(`Getting ${username}'s liked content`);
+const getLikedIdByUser = async (username) => {
 	try {
 		const user = await userModel.findOne({ username }, "liked").lean();
 		let result = Array.from(user.liked).map((likedElement) => likedElement._id);
@@ -38,4 +37,15 @@ const getLikedByUser = async (username) => {
 	}
 };
 
-module.exports = { connectDB, getLikedByUser };
+const getLikedIdAndType = async (username) => {
+	try {
+		const user = await userModel.findOne({ username }, "liked").lean();
+		let result = Array.from(user.liked).map((likedElement) => [likedElement._id, likedElement.resultType]);
+		return (result = result.filter((e) => e));
+	} catch (err) {
+		console.log(`Error getting ${username}'s liked content - ${err}`);
+		console.error(err);
+	}
+};
+
+module.exports = { connectDB, getLikedIdByUser, getLikedIdAndType };
