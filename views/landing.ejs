@@ -1,16 +1,14 @@
 <main class="main-landing">
 	<section class="section-landing">
 		<nav id="nav-register">
-		<ul class="nav nav-tabs">
-			<li class="nav-item">
-			  <a class="nav-link disabled current" aria-current="page" href="#">Register</a>
-			</li>
-			<li class="nav-item">
-			  <a class="nav-link" href="/login">Login</a>
-			  
-			</li>
-			
-		  </ul>
+			<ul class="nav nav-tabs">
+				<li class="nav-item">
+					<a class="nav-link disabled current" aria-current="page" href="#">Register</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="/login">Login</a>
+				</li>
+			</ul>
 		</nav>
 		<form id="form-register" class="form-landing" action="auth/register" method="post">
 			<label>Email</label>
@@ -60,7 +58,7 @@
 					required
 				/>
 			</div>
-
+			
 			<p>
 				<label>
 					<input type="checkbox" value="terms" />
@@ -71,8 +69,9 @@
 				<button id="reset-button" type="reset">Reset form</button>
 				<button id="register-button" formmethod="POST" form="form-register" type="submit">Sign up</button>
 			</p>
-			<% if (message) { %><span class="alert alert-<%= alertType %> span-Context" role="alert"><%= message %></span><% } %>
+			<% if (message) { %>
+				<span class="alert alert-<%= alertType %> span-Context" role="alert"><%= message %></span>
+			<% } %>
 		</form>
-
 	</section>
 </main>

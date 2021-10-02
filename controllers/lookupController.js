@@ -17,7 +17,6 @@ exports.series = async (req, res, next) => {
 };
 //type: game, series, movie
 const getDataByIdAndType = async (imdbID, type, req, res) => {
-	console.dir(req.session);
 	axios
 		.get("https://www.omdbapi.com/", {
 			params: {
