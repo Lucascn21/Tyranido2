@@ -1,6 +1,6 @@
 const userModel = require("../models/User");
 const createError = require("http-errors");
-const { getLikedByUser, getMongoID } = require("../helpers/database");
+const { getLikedByUser } = require("../helpers/database");
 // GET user
 exports.index = async (req, res, next) => {
 	return res.render("user", { context: res.locals.context });
@@ -8,7 +8,6 @@ exports.index = async (req, res, next) => {
 
 exports.like = async (req, res, next) => {
 	console.dir("req");
-	//console.dir(req);
 	console.dir(req.body);
 	console.dir(req.session.owner);
 	let username = req.session.owner;
