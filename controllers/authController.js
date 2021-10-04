@@ -69,7 +69,7 @@ exports.login = async (req, res, next) => {
 	}
 };
 
-// POST /auth/logout
+// GET /auth/logout
 exports.logout = async (req, res, next) => {
 	if (req.session.isAuth) {
 		req.session.destroy();

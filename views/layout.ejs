@@ -24,15 +24,13 @@
 	<body>
 		<nav id="nav-body">
 			<header>Tyranido</header>
-			<a href="/">LookUp</a> <a href="/user">User</a>
-			<form action="/auth/logout" method="post">
-				<input type="submit" name="logout" value="logout" />
-			</form>
+			<a href="/lookup"><i class="fa fa-search" aria-hidden="true"> Movies/Series/Games</i></a>
+			<a href="/user"><i class="fa fa-user" aria-hidden="true"> User</i></a>
+			<a href="/auth/logout"><i class="fa fa-sign-out" aria-hidden="true"> Logout</i></a>
 		</nav>
 
 		<%- body %>
 
 		<footer><p>Some rights reserved</p></footer>
-		
 	</body>
 </html>

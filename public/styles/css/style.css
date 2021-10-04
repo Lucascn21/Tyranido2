@@ -222,7 +222,8 @@ main {
   grid-template-areas: "section-user" "section-liked-movies " "section-liked-series " "section-liked-games";
   grid-template-rows: 0.8fr 1fr 1fr 1fr;
   grid-template-columns: 100%;
-  row-gap: 1em; }
+  row-gap: 1em;
+  overflow-x: clip; }
   #main-user img {
     width: 100%;
     height: 100%; }

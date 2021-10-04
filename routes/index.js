@@ -16,7 +16,7 @@ router.get("/login", isNotAuth, loginController.index);
 
 router.post("/auth/register", authController.register);
 router.post("/auth/login", authController.login);
-router.post("/auth/logout", authController.logout);
+router.get("/auth/logout", authController.logout);
 
 router.get("/lookup", isAuth, lookupController.index);
 
