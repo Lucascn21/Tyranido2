@@ -3,9 +3,20 @@ const createError = require("http-errors");
 const { getLikedIdByUser, getLikedIdAndType } = require("../helpers/database");
 // GET user
 exports.index = async (req, res, next) => {
-	console.dir("userController session")
-	console.dir(await getLikedIdAndType(req.session.owner))
-	return res.render("user", { context: res.locals.context });
+	console.dir("userController session");
+	let likedContent = await getLikedIdAndType(req.session.owner);
+	res.locals.movies = [], res.locals.games = [], res.locals.series = [];
+	likedContent.forEach((content) => {
+		if (content.resultType== "movie") {
+			res.locals.movies.push(content);
+		} else if (content.resultType == "game") {
+			res.locals.games.push(content);
+		} else {
+			res.locals.series.push(content);
+		}
+	});
+	console.dir(res.locals)
+	return res.render("user", { context: res.locals.context, movies:res.locals.movies, games:res.locals.games, series:res.locals.series });
 };
 
 exports.like = async (req, res, next) => {

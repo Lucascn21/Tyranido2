@@ -12,7 +12,8 @@ body {
   height: 100%;
   background-color: #ff8f00;
   grid-template-areas: "nav" "main" "footer";
-  grid-template-rows: 7% auto 7%; }
+  grid-template-rows: 7% auto 7%;
+  grid-template-columns: 100%; }
 
 body #nav-body {
   display: flex;
@@ -220,8 +221,11 @@ main {
 #main-user {
   grid-template-areas: "section-user" "section-liked-movies " "section-liked-series " "section-liked-games";
   grid-template-rows: 0.8fr 1fr 1fr 1fr;
-  grid-template-columns: 1fr;
+  grid-template-columns: 100%;
   row-gap: 1em; }
+  #main-user img {
+    width: 100%;
+    height: 100%; }
 
 #section-user {
   grid-area: section-user;
@@ -245,7 +249,9 @@ main {
     overflow: hidden; }
   #section-liked-movies .carousel-inner img {
     width: 100%;
-    height: 100%; }
+    height: 100%;
+    height: 479px;
+    width: 410px; }
   #section-liked-movies .carousel-item {
     width: 100%;
     height: 100%; }
@@ -274,7 +280,9 @@ main {
     overflow: hidden; }
   #section-liked-series .carousel-inner img {
     width: 100%;
-    height: 100%; }
+    height: 100%;
+    height: 479px;
+    width: 410px; }
   #section-liked-series .carousel-item {
     width: 100%;
     height: 100%; }
@@ -303,7 +311,9 @@ main {
     overflow: hidden; }
   #section-liked-games .carousel-inner img {
     width: 100%;
-    height: 100%; }
+    height: 100%;
+    height: 479px;
+    width: 410px; }
   #section-liked-games .carousel-item {
     width: 100%;
     height: 100%; }
@@ -318,6 +328,9 @@ main {
 @media only screen and (min-width: 1024px) {
   .carousel-inner {
     height: 90% !important; }
+    .carousel-inner .carousel-item img {
+      max-height: 626.797px;
+      max-width: 424.188px; }
   #main-user {
     grid-template-areas: "section-user section-user section-user" "section-liked-movies section-liked-series section-liked-games";
     grid-template-rows: 0.35fr 1fr;

@@ -11,6 +11,9 @@ const likeSubschema = new Schema({
 	resultType: {
 		type: String,
 	},
+	poster: {
+		type: String,
+	},
 });
 
 const userSchema = new Schema({

@@ -10,6 +10,8 @@ const isAuth = async (req, res, next) => {
 	}
 };
 
+
+
 //Mw that handles the user trying to register/login while already logged in
 const isNotAuth = (req, res, next) => {
 	if (req.session.isAuth) {

@@ -40,7 +40,7 @@ const getLikedIdByUser = async (username) => {
 const getLikedIdAndType = async (username) => {
 	try {
 		const user = await userModel.findOne({ username }, "liked").lean();
-		let result = Array.from(user.liked).map((likedElement) => [likedElement._id, likedElement.resultType]);
+		let result=Array.from(user.liked);
 		return (result = result.filter((e) => e));
 	} catch (err) {
 		console.log(`Error getting ${username}'s liked content - ${err}`);
