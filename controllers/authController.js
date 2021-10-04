@@ -19,7 +19,7 @@ exports.register = async (req, res, next) => {
 		username,
 		email,
 		password: await encrypt(password, parseInt(process.env.HASH_SALT)),
-		liked:[]
+		liked: [],
 	});
 
 	try {
@@ -54,7 +54,7 @@ exports.login = async (req, res, next) => {
 			req.session.alertType = "success";
 			req.session.isAuth = true;
 			req.session.owner = username;
-			req.session.searchResult=[];
+			req.session.searchResult = [];
 			return res.redirect("/lookup");
 		} else {
 			res.status(409);
@@ -66,6 +66,37 @@ exports.login = async (req, res, next) => {
 		req.session.message = `Forbidden 401`;
 		req.session.alertType = "danger";
 		return next(createError(401));
+	}
+};
+
+// POST /auth/changepw
+exports.changepw = async (req, res, next) => {
+	//Get this from the body
+	const { desiredPassword, oldPassword } = req.body;
+	let username=req.session.owner
+	console.dir(req.body)
+	let user = await userModel.findOne({ username });
+	if (user) {
+		const passwordMatches = await compare(oldPassword, user.password);
+		if (passwordMatches) {
+			user.password = await encrypt(desiredPassword, parseInt(process.env.HASH_SALT));
+			req.session.message = "Changed password successfuly";
+			req.session.alertType = "success";
+		} else {
+			req.session.message = "Password does not match";
+			req.session.alertType = "warning";
+			return res.redirect("/user");
+		}
+	}
+
+	try {
+		await user.save();
+		res.redirect("/user");
+	} catch (error) {
+		console.dir(error);
+		req.session.alertType = "danger";
+		req.session.message = `Form error on password change`;
+		return res.redirect("/");
 	}
 };
 
