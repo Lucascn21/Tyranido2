@@ -12,7 +12,7 @@ const connectDB = async () => {
 		const query = { username: "test1234" };
 		userModel.findOneAndUpdate(
 			query,
-			{ username: "test1234", password: await encrypt("test1234", parseInt(process.env.HASH_SALT)) },
+			{ username: "test1234",email: "test1234@test1234.com", password: await encrypt("test1234", parseInt(process.env.HASH_SALT)) },
 			{ upsert: true, new: true, runValidators: true },
 			function (err, doc) {
 				if (err) console.dir(`error creating test account${err}`);

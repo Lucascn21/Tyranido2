@@ -139,7 +139,8 @@ main {
       filter: alpha(opacity=50); }
     #main-dashboard #section-movies .movie-card:hover {
       opacity: 1;
-      filter: alpha(opacity=100); }
+      filter: alpha(opacity=100);
+      cursor: pointer; }
     #main-dashboard #section-movies h5 {
       font-size: 0.95rem; }
     #main-dashboard #section-movies .card-img-top {
