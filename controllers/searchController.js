@@ -1,5 +1,5 @@
 const axios = require("axios");
-const { getLikedByUser } = require("../helpers/database");
+const { getLikedIdByUser } = require("../helpers/database");
 
 // POST /search
 exports.search = async (req, res, next) => {
@@ -21,8 +21,9 @@ exports.search = async (req, res, next) => {
 				req.session.searchResult = response.data.Search;
 				req.session.resultsAmount = response.data.Search.length;
 				req.session.totalResults = response.data.totalResults;
-				req.session.likedContent = await getLikedByUser(req.session.owner);
+				req.session.likedContent = await getLikedIdByUser(req.session.owner);
 				req.session.searchResult.forEach((element) => {
+					console.dir(element.Poster)
 					if (element.Poster == "N/A") element.Poster = "/images/nopicture.png";
 					if (req.session.likedContent.includes(element.imdbID)) {
 						element.liked = true;
