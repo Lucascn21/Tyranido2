@@ -2,7 +2,7 @@
   "version": 2,
   "builds": [{ "src": "*.js", "use": "@vercel/node" }],
   "routes": [
-    { "src": "/(.*)", "dest": "/" },
+    { "src": "/(.*)", "dest": "routes/index.js" },
 
     { "src": "/auth/register", "methods": ["POST"], "dest": "/" },
     { "src": "/auth/login", "methods": ["POST"], "dest": "/" },
