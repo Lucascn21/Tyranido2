@@ -1,5 +1,14 @@
 {
   "version": 2,
   "builds": [{ "src": "*.js", "use": "@vercel/node" }],
-  "routes": [{ "src": "/(.*)", "dest": "/" }]
+  "routes": [
+    { "src": "/(.*)", "dest": "/" },
+
+    { "src": "/auth/register", "methods": ["POST"], "dest": "/" },
+    { "src": "/auth/login", "methods": ["POST"], "dest": "/" },
+    { "src": "/auth/changepw", "methods": ["POST"], "dest": "/" },
+    { "src": "/auth/logout", "methods": ["POST"], "dest": "/" },
+    { "src": "/search", "methods": ["POST"], "dest": "/" },
+    { "src": "/lookup", "methods": ["GET"], "dest": "/" }
+  ]
 }
