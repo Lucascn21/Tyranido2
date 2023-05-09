@@ -5,8 +5,8 @@ const lookupController = require("../controllers/lookupController");
 const authController = require("../controllers/authController");
 const landingController = require("../controllers/landingController");
 const loginController = require("../controllers/loginController");
-const searchController= require('../controllers/searchController')
-const userController= require('../controllers/userController')
+const searchController = require("../controllers/searchController");
+const userController = require("../controllers/userController");
 const { isNotAuth, isAuth } = require("../middlewares/session");
 
 router.get("/", isNotAuth, landingController.index);
@@ -21,8 +21,7 @@ router.get("/auth/logout", authController.logout);
 
 router.get("/lookup", isAuth, lookupController.index);
 
-router.post("/search",  isAuth, searchController.search);
-
+router.post("/search", isAuth, searchController.search);
 
 router.get("/lookup/movie/:imdbID", isAuth, lookupController.movie);
 router.get("/lookup/game/:imdbID", isAuth, lookupController.game);
@@ -30,9 +29,5 @@ router.get("/lookup/series/:imdbID", isAuth, lookupController.series);
 
 router.get("/user", isAuth, userController.index);
 router.post("/user/like", isAuth, userController.like);
-
-
-
-
 
 module.exports = router;
